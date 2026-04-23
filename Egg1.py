@@ -10,4 +10,4 @@ elif ntotal < 6.0 and ntotal >= 4.0:
 elif ntotal < 4.0:
     print(f"Reprobó, su nota es: {ntotal:.2f}")
 else:
-    print("Valor invalido")
+    print("Valor invalido")#no
