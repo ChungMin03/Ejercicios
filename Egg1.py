@@ -1,4 +1,4 @@
-#pete osvaldo
+#pete tkiero
 grade1 = float(input("Ingrese su primera nota: "))
 grade2 = float(input("Ingrese su segunda nota: "))
 grade3 = float(input("Ingrese su tercera nota: "))
