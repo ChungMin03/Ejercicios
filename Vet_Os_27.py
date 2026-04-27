@@ -3,9 +3,9 @@ specie = input("Ingrese que especie es su mascota:\n").lower()
 weight = float(input("Iingrese el peso de su mascota en kg: "))
 
 if specie != ("perro" or "gato"):                   #Descate de mascotas invalidas
-    print("Especie no atendida en esta clinica")
+    print("Especie no atendida en esta clinica")			
 elif specie == "perro" and weight < 10:
-    consulta = "Consulta pequeña"
+    consulta = "Consulta pequeña"						#Genera de una vez el texto para el print, así evitar lineas de codigo y crea la diferenciacion con el resto de variables
 elif specie == "perro" and weight >= 10:
     consulta = "Consulta grande"
 else:
