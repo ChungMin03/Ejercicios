@@ -1,8 +1,12 @@
+
+#Definicion de variables-----------------------------------------------------------------------------
 name = input("Ingrese su nombre\n")
 kwh = int(input("Ingrese la cantidad kwh consumido: "))
 type = input("Que tipo de residencia tiene (residencial o comercial)\n").lower()
 
 
+#Bloque de ejecucion--------------------------------------------------------------------------------
+#validar que tipo de residencia tiene y el valor que le genera
 if type != "residencial" and type != "comercial":
     print("Residencia invalida")
     total = 0
@@ -14,7 +18,7 @@ elif type == "residencial":
 elif type == "comercial":
     total = kwh * 130
 
-#te dice cosas
+#Este if es para que no se tire el valor cuando el tipo de recidencia es invalido------------------
 if total != 0:
     print(f"Su nombre es: {name.upper()}")
     print(f"El largo del nombre es: {len(name)}")
