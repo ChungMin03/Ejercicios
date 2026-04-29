@@ -1,12 +1,12 @@
 
 #Definicion de variables-----------------------------------------------------------------------------
 name = input("Ingrese su nombre\n")
-kwh = int(input("Ingrese la cantidad kwh consumido: "))
+kwh = float(input("Ingrese la cantidad kwh consumido: "))
 type = input("Que tipo de residencia tiene (residencial o comercial)\n").lower()
 
 
 #Bloque de ejecucion--------------------------------------------------------------------------------
-#validar que tipo de residencia tiene y el valor que le genera
+#validacion de que tipo de residencia tiene y el valor que le genera
 if type != "residencial" and type != "comercial":
     print("Residencia invalida")
     total = 0
