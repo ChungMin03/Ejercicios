@@ -27,11 +27,11 @@ puntaje= 100
 resultado = ""
 
 #--- bloque de ejecucion ---
-if numero % 3 == 0 and (numero + 1 <= lim_sup):
-    numero += 1
-elif numero % 3 == 0 and numero > lim_sup:
-    numero -= 1
-
+if numero % 3 == 0:
+    if numero + 1 <= lim_sup:
+        numero += 1
+    else:
+        numero -= 1
 
 print("--- PRIMER INTENTO ---") #iniciamos primer intento
 #preguntamos numero al usuario
@@ -40,7 +40,7 @@ num_usuario = int(input("Ingrese su número: "))
 if num_usuario == numero:
     resultado = f"Felicidades, adivinaste\nPuntaje final: {puntaje}"
 else:
-    diferencia = num_usuario - numero
+    diferencia = abs(num_usuario - numero)
     if diferencia > 20:
         puntaje -= 30
     elif diferencia >= 11 and diferencia <= 20:
@@ -63,7 +63,7 @@ else:
     if num_usuario == numero:
         resultado = f"Felicidades, adivinaste\nPuntaje final: {puntaje}"
     else:
-        diferencia = num_usuario - numero
+        diferencia = abs(num_usuario - numero)
         if diferencia > 20:
             puntaje -= 30
         elif diferencia >= 11 and diferencia <= 20:
@@ -84,7 +84,7 @@ else:
         if num_usuario == numero:
             resultado = f"Felicidades, adivinaste\nPuntaje final: {puntaje}"
         else:
-            diferencia = num_usuario - numero
+            diferencia = abs(num_usuario - numero)
             if diferencia > 20:
                 puntaje -= 30
             elif diferencia >= 11 and diferencia <= 20:
