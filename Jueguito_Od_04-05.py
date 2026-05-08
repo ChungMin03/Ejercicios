@@ -154,3 +154,4 @@ if puntos <= 100 and puntos >= 80:
 elif puntos <= 79 and puntos >= 50:
     print("Regular")
 elif puntos <= 49 and puntos >= 0:
+    print("Necesita Mejorar")
