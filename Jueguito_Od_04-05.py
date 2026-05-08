@@ -91,7 +91,8 @@ elif intento != aleatorio:
         print(f"Ganaste con {puntos} puntos")
     elif intento != aleatorio:
 
-        #Caso es muy alto
+        #------------------------------------Caso es muy alto------------------------------
+
         if intento > aleatorio and diff > 20:
             print("Muy alto")
             puntos = puntos - 30
@@ -103,7 +104,8 @@ elif intento != aleatorio:
             puntos = puntos - 10
 
 
-            #Caso es muy bajo
+            #--------------------------------Caso es muy bajo--------------------------------
+
         elif intento < aleatorio and diff > 20:
             print("Muy bajo")
             puntos = puntos - 30
