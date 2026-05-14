@@ -58,16 +58,29 @@ while option != 5:
     print("5.- Salir")
 
 #opciones del menu
-    option = int(input("Ingrese a opcion que desea usar: "))
-
+    try:
+        option = int(input("Ingrese a opcion que desea usar: "))
+    except ValueError:
+        print("Ingrese un valor númerico")
+        continue
     #suma
     if option == 1:
-
-        cant1 = int(input("Ingrese la cantidad de numeros que desea sumar: "))
-
-        for i in range(1,(cant1+1)):
-            num1 = float(input("Ingrese el valor a sumar"))
-            suma += num1
+        flag = False
+        while not flag:
+            try:
+                cant1 = int(input("Ingrese la cantidad de numeros que desea sumar: "))
+                flag = True
+            except ValueError:
+                print("Ingrese un valor númerico")
+       
+            for i in range(1,(cant1+1)):
+                try:
+                    num1 = float(input("Ingrese el valor a sumar: "))
+                    suma += num1
+                except ValueError:
+                    print("Ingrese un valor númerico")
+                    i -= 1
+                    continue
 
         print(f"El total de los {cant1} numeros sumados fue: {suma}")
 
