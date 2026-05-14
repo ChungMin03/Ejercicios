@@ -12,6 +12,7 @@ print(f"El total de numeros pares entre 1 y {num} es: {count}")
 
 #EJERCICIO MENU
 opcion = 0
+opcion_valida = False
 while opcion != 4:
     print("**** CALCULADORA ****")
     print("1.- Sumar")
@@ -19,21 +20,45 @@ while opcion != 4:
     print("3.- Multiplicar")
     print("4.- Salir")
     print("----------------------------------")
-    opcion = int(input("Ingrese una opcion: "))
+    try:
+        opcion = int(input("Ingrese una opcion: "))
+    except ValueError:
+        print("ERROR: Opción debe ser un numero (1-4).")
+        print("----------------------------------")
+        continue
 
     if opcion == 1:
-        num1 = int(input("Ingrese el primer numero a sumar: "))
-        num2 = int(input("Ingrese el segundo numero a sumar: "))
+        try:
+            num1 = int(input("Ingrese el primer numero a sumar: "))
+            num2 = int(input("Ingrese el segundo numero a sumar: "))
+        except ValueError:
+            print("ERROR: Ingrese numeros enteros.")
+            print("----------------------------------")
+            continue
+
         print(f"{num1} + {num2} = {num1 + num2}")
         print("----------------------------------")
     elif opcion == 2:
-        num1 = int(input("Ingrese el primer numero a restar: "))
-        num2 = int(input("Ingrese el segundo numero a restar: "))
+        try:
+            num1 = int(input("Ingrese el primer numero a restar: "))
+            num2 = int(input("Ingrese el segundo numero a restar: "))
+        except ValueError:
+            print("ERROR: Ingrese numeros enteros.")
+            print("----------------------------------")
+            continue
         print(f"{num1} - {num2} = {num1 - num2}")
         print("----------------------------------")
     elif opcion == 3:
-        num1 = int(input("Ingrese el primer numero a multiplicar: "))
-        num2 = int(input("Ingrese el segundo numero a multiplicar: "))
+        opcion_valida = False
+        while not opcion_valida:
+            try:
+                num1 = int(input("Ingrese el primer numero a multiplicar: "))
+                num2 = int(input("Ingrese el segundo numero a multiplicar: "))
+                opcion_valida = True
+            except ValueError:
+                print("ERROR: Ingrese numeros enteros.")
+                print("----------------------------------")
+
         print(f"{num1} * {num2} = {num1 * num2}")
         print("----------------------------------")
     elif opcion == 4:
