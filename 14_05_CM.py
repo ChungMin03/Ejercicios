@@ -99,10 +99,11 @@ while opcion != 4:
             porcent_45 = nivel_4_5 / count * 100
             
             #prints
+            print("********* Estadisticas ***********")
             print(f"Promedio de satisfacción: {promedio}")
             print(f"Mejor puntuación: {mejor}")
             print(f"Peor puntuación: {peor}")
-            print(f"Porcentaje de satisfacción 4 o 5: {porcent_45}")
+            print(f"Porcentaje de satisfacción 4 o 5: {porcent_45}%")
             print("----------------------------------")
 
         except ZeroDivisionError:
