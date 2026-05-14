@@ -1,6 +1,6 @@
 #ejercicio ejemplo (mio)
 #1. Pedir la cantidad de socios con validacion (Try-Except)
-cant_valida = False
+"""cant_valida = False
 while not cant_valida:
     try:
         cant_socios = int(input("Ingrese la cantidad de socios que desea inscribir: "))
@@ -39,3 +39,91 @@ for i in range(1, cant_socios+1):
         print(f"Socio {nombre} aceptado")
     else:
         print(f"Socio {nombre} rechazado\n{motivos_rechazo}")
+"""
+
+#ejercicio encuesta satisfaccion
+opcion = 0
+count = 0
+acum = 0
+promedio = 0
+mejor = 0
+peor  = 6
+nivel_4_5 = 0
+porcent_45 = 0
+opcion_valida = False
+
+while opcion != 4:
+    print("**** ENCUESTA SATISFACCIÓN ****")
+    print("1.- Registrar respuestas")
+    print("2.- Ver estadisticas")
+    print("3.- Nueva encuesta")
+    print("4.- Salir")
+    print("----------------------------------")
+    try:
+        opcion = int(input("Ingrese una opcion: "))
+    except ValueError:
+        print("ERROR: Opción debe ser un numero (1-4).")
+        print("----------------------------------")
+        continue
+    
+    if opcion == 1:
+        print("---- Nivel de satisfacción ----")
+        print("(1) Muy insatisfecho\n(2) Insatisfecho\n(3) Medianamente satisfecho\n(4) Satisfecho\n(5) Muy satisfecho\n")
+        
+        try:
+            nivel_sat = int(input("Ingrese su nivel de satisfacción (1/5): "))
+            if nivel_sat < 1 or nivel_sat > 5:
+                raise ValueError("El nivel de satisfacción debe estar entre 1 y 5")
+        except ValueError as error:
+            print(f"ERROR: {error}")
+            print("----------------------------------")
+            continue
+        
+        if nivel_sat < peor:
+            peor = nivel_sat
+
+        if nivel_sat > mejor:
+            mejor = nivel_sat
+        
+        if nivel_sat >=4:
+            nivel_4_5 += 1
+
+        count += 1
+        acum += nivel_sat
+        print("----------------------------------")
+    elif opcion == 2:
+        try:
+            #promedio
+            promedio = acum / count
+            #porcentaje que respondieron 4 o 5
+            porcent_45 = nivel_4_5 / count * 100
+            
+            #prints
+            print(f"Promedio de satisfacción: {promedio}")
+            print(f"Mejor puntuación: {mejor}")
+            print(f"Peor puntuación: {peor}")
+            print(f"Porcentaje de satisfacción 4 o 5: {porcent_45}")
+            print("----------------------------------")
+
+        except ZeroDivisionError:
+            print("No ha respondido la encuesta de satisfacción")
+            print("----------------------------------")
+
+
+    elif opcion == 3:
+        count = 0
+        acum = 0
+        promedio = 0
+        mejor = 0
+        peor  = 6
+        nivel_4_5 = 0
+        porcent_45 = 0
+        print("Contadores reiniciados")
+        print("----------------------------------")
+
+    elif opcion == 4:
+        print("Gracias por responder nuestra encuesta")
+        print("----------------------------------")
+    else:
+        print("Opción ingresada no válida")
+        print("----------------------------------")
