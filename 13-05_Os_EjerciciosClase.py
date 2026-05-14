@@ -46,29 +46,73 @@ el ciclo se repite hasta que se elija salir"""
 
 resta = 0
 suma = 0
+mult = 1
 option = 0
-while option != 4:
+while option != 5:
+
+    #Menu
     print("1.- Sumar")
     print("2.- Restar")
     print("3.- Multiplicar")
-    print("4.- Salir")
-option =  int(input("Ingrese a opcion de la operacion marematica que desea usar: ")):
-if option == 1:
+    print("4.- Division")
+    print("5.- Salir")
 
-    cant1 = int(input("Ingrese la cantidad de numeros que desea sumar: "))
+#opciones del menu
+    option = int(input("Ingrese a opcion que desea usar: "))
 
-    for i in range(1,cant1):
-        num1 = float(input("Ingrese el valor a sumar"))
-        suma += num1
+    #suma
+    if option == 1:
 
-    print(f"El total de los {cant1} numeros sumados fue: {suma}")
+        cant1 = int(input("Ingrese la cantidad de numeros que desea sumar: "))
 
-if option == 2:
+        for i in range(1,(cant1+1)):
+            num1 = float(input("Ingrese el valor a sumar"))
+            suma += num1
 
-    cant2 = int(input("Ingrese la cantidad de numeros que desea restar: "))
+        print(f"El total de los {cant1} numeros sumados fue: {suma}")
 
-    for i in range(1,cant2):
-        num2 = float(input("Ingrese el valor a restar"))
-        resta -= num1
-        
-    print(f"El total de los {cant1} numeros restados fue: {suma}")
+    #resta
+    elif option == 2:
+
+        cant2 = int(input("Ingrese la cantidad de numeros que desea restar: "))
+
+        for i in range(1,((cant2+1))):
+            num2 = float(input("Ingrese el valor a restar"))
+            abs.resta -= num2
+            
+        print(f"El total de los {cant2} numeros restados fue: {resta}")
+
+    #Multiplicacion
+    elif option == 3:
+
+        cant3 = int(input("Ingrese la cantidad de numeros que desea multiplicar: "))
+
+        for i in range(1,(cant3+1)):
+            num3 = float(input("Ingrese el valor a restar"))
+            mult *= num3
+            
+        print(f"El total de los {cant3} numeros multiplcados fue: {mult}")
+    
+
+    #Division
+    elif option == 4:
+
+        num4 = float(input("Ingrese el dividendo: "))
+        num5 = float(input("Ingrese el divisor: "))
+
+        if num5 == 0:
+            print("Divisor invalido")
+
+        else:
+            div = num4/num5
+            print(f"El resultado de la division es: {div}")
+
+
+    #opcion final
+    elif option == 5:
+
+        print("Gragias por usar nuestra calculadora")
+
+    #Opcion en caso de error
+    else:
+        print("Opcion invalida, vuelva a tratar con alguno de las opciones")
