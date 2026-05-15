@@ -33,10 +33,18 @@ while opcion != 4:
         opcion = int(input("Ingrese una de las opciones(1-4): "))
     except ValueError:
         print("Ingrese un valor numerico del 1 al 4")
-        continue
+
 #-------------------Bloque de ejecución-------------------------------------------------------------
+
     if opcion == 1:
-        nivel = int(input("Ingrese Su nivel de satisfacción\n5 = Muy satisfecho\n4 = Satisfecho\n3 = Neutral\n2 = Insatisfecho\n1 = Muy insatisfecho\n "))
+        flag1 = False
+        while not flag1:
+            try:
+                nivel = int(input("Ingrese Su nivel de satisfacción\n5 = Muy satisfecho\n4 = Satisfecho\n3 = Neutral\n2 = Insatisfecho\n1 = Muy insatisfecho\n "))
+                flag1 = True
+            except ValueError:
+                print("Ingrese un valor numerico")
+
         total_respuestas += 1
         total_nivel += nivel
         if nivel == 5:
