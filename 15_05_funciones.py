@@ -66,7 +66,7 @@ while opcion != 4:
 lista_notas = []
 flag = False
 
-while not flag:
+"""while not flag:
     try:
         num = float(input("Ingrese una nota culia (para detenerse escriba):"))
         lista_notas.append(num)
@@ -74,4 +74,15 @@ while not flag:
         print("Lista terminada")
         flag = True
         
-print(max(lista_notas))
+#print(max(lista_notas))
+"""
+
+lista = [2,4,5,1,2,3,4,5]
+lst = [i for i in lista if i%2==0 and i > 2]
+print(lst)
+
+lst2 = []
+for i in lista:
+    if i % 2 == 0:
+        lst2.append(i)
+print(lst2)

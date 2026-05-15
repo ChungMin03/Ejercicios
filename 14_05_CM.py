@@ -85,7 +85,7 @@ while opcion != 4:
         if nivel_sat > mejor:
             mejor = nivel_sat
         
-        if nivel_sat >=4:
+        if nivel_sat >= 4:
             nivel_4_5 += 1
 
         count += 1
