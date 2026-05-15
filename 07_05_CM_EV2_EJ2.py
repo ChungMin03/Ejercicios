@@ -41,10 +41,10 @@ else:
         else:
             print(f"El número que buscas está más cerca de {intento_1} que de {intento_2}")
     
-    #INTENTO 3
-    print("******** TERCER INTENTO ********")
-    intento_3 = int(input("Intente la última vez: "))
-    if intento_3 == numero:
-        print("Felicitaciones, pudiste adivinar")
-    else:
-        print(f"Perdiste.\nEl número era: {numero}")
+            #INTENTO 3
+        print("******** TERCER INTENTO ********")
+        intento_3 = int(input("Intente la última vez: "))
+        if intento_3 == numero:
+            print("Felicitaciones, pudiste adivinar")
+        else:
+            print(f"Perdiste.\nEl número era: {numero}")                        

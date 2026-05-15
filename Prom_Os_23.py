@@ -1,4 +1,4 @@
-grade1 = float(input("Ingrese su primera nota: "))
+"""grade1 = float(input("Ingrese su primera nota: "))
 grade2 = float(input("Ingrese su segunda nota: "))
 grade3 = float(input("Ingrese su tercera nota: "))
 
@@ -10,4 +10,6 @@ elif ntotal < 6.0 and ntotal >= 4.0:
 elif ntotal < 4.0:
     print(f"Reprobó, su nota es: {ntotal:.2f}")
 else:
-    print("Valor invalido") 
+    print("Valor invalido") """
+    
+num = int(input("numero: "))
