@@ -103,11 +103,15 @@ print(f"el factorial de {quantity} es: {total}")
 #Ejercicio 3
 """El ususario ingresa N numeros enteros, al final el programa muestra cual fue el mayor y el menor"""
 
-#-----------------bloque de input y variables---------------------------
 '''
+#-----------------bloque de input y variables---------------------------
+
 n = int(input("Ingrese cuantos enteros va a ingresar al programa: "))
+
 mayor = 0               #se elije un numero bajo para que cualquier numero que elija se mayor que el que elija el usuario
-menor = 10000000000000000000000000000000000000000000000000000000000000000 #se define un numero grande para que cualquier primer numero que elija el usuario sea menor
+
+menor = 10000000000000000000000000000000000000000000000000000000000000000 #se define un numero grande para que 
+                                                                          #cualquier primer numero que elija el usuario sea menor
 
 #-----------------bloque de ejecucion-------------------------
 for i in range(1,(n+1)):
@@ -155,3 +159,86 @@ elif age > 64:
     print("Usted es adulto mayor")
 
  '''           
+
+
+#ejercicio 5
+"""El usuario ingresa n, con n siendo el numero de temperatutas que desea ingresar en celsius,
+para cada temperatura que ingresa se muestra la temperatura en fahreheint y kelvin """
+'''
+#-----------------bloque de inputs y variables------------------------
+total = int(input("Ingrese la cantidad de temperaturas que desea calcular en farenheint y kelvin: "))
+
+#-----------------bloque de ejecucion---------------------------------
+for i in range(total):
+    c = float(input("Ingrese la temperatura en Celsius: "))
+    f = c * 9/5 + 32
+    k = c + 273.15
+    print(f"Fahreinheint: {f}\nKelvin: {k}")
+'''
+
+
+#------------------------nivel 3--------------------------------------
+
+
+#ejercicio 1
+"""calculadora de suma, resta, multiplicacion, de dos numeros"""
+
+'''
+#-----------------bloque de menu--------------------------------------
+option = 0
+while option != 4:
+    print("***CALCULADORA***")
+    print("1.- Suma")
+    print("2.- Resta")
+    print("3.- Multiplicacion")
+    print("4.- Salir")
+
+    try:
+        option = int(input("Ingrese Opcion (1-4): "))
+
+        if option < 1 or option > 4:
+            raise ValueError("La opcion debe estar entre 1 y 4")
+        
+    except ValueError as error:
+        print(f"ERROR: {error}")
+
+#-----------------bloque de ejecucion---------------------------------
+    if option == 1:
+        try:
+            a = int(input("Ingrese el primer numero: "))
+            b = int(input("Ingrese el segundo numero: "))
+            resultado = a + b
+
+            print(f"El resultado es: {resultado}")
+
+        except ValueError:
+                print("Ingrese un numero valido")
+
+    elif option == 2:
+        try:
+            a = int(input("Ingrese el primer numero: "))
+            b = int(input("Ingrese el segundo numero: "))
+            resultado = a - b
+
+            print(f"El resultado es: {resultado}")
+
+        except ValueError:
+                print("Ingrese un numero valido")
+
+    elif option == 3:
+        try:
+            a = int(input("Ingrese el primer numero: "))
+            b = int(input("Ingrese el segundo numero: "))
+            resultado = a * b
+
+            print(f"El resultado es: {resultado}")
+
+        except ValueError:
+                print("Ingrese un numero valido")
+
+    elif option == 4:
+        print("Gracias por usar nuestra calculadora")
+'''
+
+
+#Ejercicio 2
