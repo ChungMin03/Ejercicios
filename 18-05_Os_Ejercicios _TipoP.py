@@ -34,7 +34,7 @@ El programa debe mantener contadores separados para vehículos Pesados y Ligeros
 
 
 """
-#-----------------bloque de inputs-------------------
+#-----------------bloque de ejecucion-------------------
 try:
     flag = False
     while not flag:
@@ -44,19 +44,31 @@ try:
             raise ValueError("la cantidad debe ser positiva")
         
 except ValueError as error1:
-    print(f"ERROR: {error}")
+    print(f"ERROR: {error1}")
 
-try: 
-    for i in range(1,(quant+1)):
+error = ""
+
+for i in range(1,(quant+1)):
+    flag1 = False
+    while not flag1:
         plate = input("Ingrese la placa del auto")
-        flag1 = True
-        if len(plate) !=6:
-            raise ValueError("Cantidad de caracteres incorrectos\n")
-        if " " in plate:
-            raise ValueError("No debe contener espacios vacios\n")
+        if len(plate) < 6:
+            error += ("Cantidad de caracteres incorrectos\n")
 
-except ValueError as error:
-    print(error)
+        if " " in plate:
+            error += ("No debe contener espacios vacios\n")
+
+        if error != "":
+            print(error)
+        
+        else:
+            flag1 = True
+
+    
+
+
+
+
 
 
 
