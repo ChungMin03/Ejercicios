@@ -242,3 +242,124 @@ while option != 4:
 
 
 #Ejercicio 2
+"""Registrar ventas durante n dias.
+ingresar monto por cada dia.
+mostrar total, promedio diario, el dia con mayor y menor"""
+
+'''
+#-----------------bloque de inputs y variables--------------
+try:
+    days = int(input("Ingrese el total de dias: "))
+    if days < 1:
+        raise ValueError("El numero de dias tiene que ser mayor que 1")
+except ValueError:
+    print("Ingrese valor numerico")
+
+
+total = 0
+mejor = 0
+peor = 1000000000000000000000000000000000
+
+#-----------------bloque de ejecucion-----------------------
+for i in range(1,(days+1)):
+
+    flag = False
+    while not flag:
+        try:
+            daily = float(input("Ingrese el monto diario: "))
+            flag = True
+
+        except ValueError:
+            print("Ingrese un valor numerico")
+
+    if daily > mejor:
+        mejor = daily
+    if daily < peor:
+        peor = daily
+
+    total += daily
+    prom = total/days
+
+#-----------------bloque de prints--------------------------
+if days != 0:
+    print(f"Total acumulado: {total}")
+    print(f"Promedio diario: {prom}")
+    print(f"El mejor dia fue de: {mejor}")
+    print(f"El peor dia fue de: {peor}")
+'''
+'''
+#Ejercicio 3
+"""Crea un menu de inventario.
+Opciones: 1- agregar stock, 2- retirar stock, 3- consultar stock, 4- salir.
+inicia con stock = 0, si no hay stock para retirar advertit sin descontar"""
+
+#-----------------bloque de inputs y variables---------------------
+stock = 0
+opcion = 0
+
+#-----------------bloque de menu-------------------------
+while opcion != 4:
+    print("---------Menu Inventario------------")
+    print("1.- Agregar stock ")
+    print("2.- Retirar stock")
+    print("3.- Consultar stock")
+    print("4.- Salir")
+
+    try:
+        opcion = int(input("Ingrese la opcion que desea usar: "))
+        if opcion < 1 or opcion > 4:
+            raise ValueError("El numero debe estar entre 1 y 4")
+        
+    except ValueError as error:
+        print(f"ERROR: {error}")
+
+#-----------------bloque de ejecucion-----------------------
+    if opcion == 1:
+        try:
+            new_stock = int(input("Indique cuanto stock desea ingresar: "))
+            stock += new_stock
+            print(f"Usted agrego {new_stock} al stock")
+
+        except ValueError:
+            print("Ingrese valor numerico")
+
+    if opcion == 2:
+        flag = False
+        while not flag:
+            try:
+                less_stock = int(input("Indique cuanto stock desea retirar: "))
+                if less_stock > stock:
+                    raise ValueError(f"No se muede retirar mas stock del que hay, le quedaria {stock-less_stock}")
+                stock -= less_stock
+                flag = True
+            except ValueError as error:
+                print(f"ERROR: {error}")
+    
+    if opcion == 3:
+        print(f"El total de stock actual es de {stock}")
+    
+    if opcion == 4:
+        print("Gestor de inventario terminado\nQue tenga buen dia.")
+'''
+
+
+#ejercicio 4
+"""FIBONACCI, muestra la secuancia hasta n, con n siendo el numero que ingresa el usuario.
+muetra tambine la cantidad de numeros generados"""
+
+#-----------------bloque de inputs y variables---------------------
+n = int(input("ingrese el numero tope hasta el que quiera que se genere fibonacci: "))
+b = 0
+a = 1
+f = 0
+count = 0
+#-----------------bloque de ejecucion-----------------------------
+while f <= n:
+    count += 1
+    print(f)
+    f = a + b
+    a = b
+    b = f 
+
+print(f"El ultimo numero menor que: {n} fue: {a}, porque el siguente es: {f}")
+print(f"En total fueron {count} numeros")

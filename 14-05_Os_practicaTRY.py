@@ -6,7 +6,7 @@
  la opcion 3 reinicia los contadores"""
 
 
-"""
+
 #-------------------Bloque de variables---------------------------------------------------------
 
 opcion = 0
@@ -45,6 +45,7 @@ while opcion != 4:
             try:
                 nivel = int(input("Ingrese Su nivel de satisfacción\n5 = Muy satisfecho\n4 = Satisfecho\n3 = Neutral\n2 = Insatisfecho\n1 = Muy insatisfecho\n "))
                 flag1 = True
+
             except ValueError:
                 print("Ingrese un valor numerico")
 
@@ -53,14 +54,19 @@ while opcion != 4:
         total_nivel += nivel
         if nivel == 5:
             muy_satisfecho += 1
+
         elif nivel == 4:
             satisfecho += 1
+
         elif nivel == 3:
             neutro += 1
+
         elif nivel == 2:
             insatisfecho += 1
+
         elif nivel == 6:
             muy_insatisfecho += 1
+            
         else:
             print("Valor invalido")
             total_respuestas -= 1
@@ -68,12 +74,16 @@ while opcion != 4:
         #Verificar cual e la mejor nota
         if muy_satisfecho != 0:
             puntaje = 5
+
         elif satisfecho != 0:
             puntaje = 4
+
         elif neutro != 0:
             puntaje = 3
+
         elif insatisfecho != 0:
             puntaje = 2
+
         elif muy_insatisfecho != 0:
             puntaje = 1
 
@@ -102,10 +112,10 @@ while opcion != 4:
         muy_insatisfecho = 0
     elif opcion == 4:
 
-        print("Gracias por usar nuestro programa de encuestas")"""
+        print("Gracias por usar nuestro programa de encuestas")
 
 
-
+"""
 #--------------intento con lista ---------------------
 #definimos variables
 lista_nivel = []
@@ -115,7 +125,7 @@ flag1 = False
 while not flag1:
     try:
         nivel = int(input("Ingrese Su nivel de satisfacción\n5 = Muy satisfecho\n4 = Satisfecho\n3 = Neutral\n2 = Insatisfecho\n1 = Muy insatisfecho\n "))
-        if nivel > 5 or nivel < 1:
+        if nivel > 5 or nivel < 1:      #verificacion de que la nota este entre 1 y 5
             raise ValueError("El nivel de satisfaccion debe estar entre 1 y 5")
     
     except ValueError as error:
@@ -125,7 +135,8 @@ while not flag1:
         
     lista_nivel.append(nivel)
 #Prints de la lista
-print(len(lista_nivel)-1)
-print(max(lista_nivel))
-print(min(lista_nivel))
-print(f"{(top_nivel/(len(lista_nivel)-1))*100}%")
+print(len(lista_nivel)-1)       #cantidad de numeros en la lista
+print(max(lista_nivel))         #la nota mas alta
+print(min(lista_nivel))         #La nota mas baja
+print(f"{(top_nivel/(len(lista_nivel)-1))*100}%")         #porcentaje de 4 y 5 en la lista
+"""
