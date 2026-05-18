@@ -51,7 +51,7 @@ error = ""
 for i in range(1,(quant+1)):
     flag1 = False
     while not flag1:
-        plate = input("Ingrese la placa del auto")
+        plate = input("Ingrese la placa del auto: ")
         if len(plate) < 6:
             error += ("Cantidad de caracteres incorrectos\n")
 
@@ -63,7 +63,12 @@ for i in range(1,(quant+1)):
         
         else:
             flag1 = True
-
+    try: 
+        flag2 = False 
+        while not flag2:
+            whight = int(input("Ingrese la carga del vehiculo: "))
+            flag2 = True
+            
     
 
 
