@@ -364,3 +364,8 @@ while f <= n:
 print(f"El ultimo numero menor que: {n} fue: {a}, porque el siguente es: {f}")
 print(f"En total fueron {count} numeros")
 '''
+
+#Ejercicio 5
+"""Notas: si tiene nota < 4: reprobado, nota entre 4 y 4.9: suficiende,
+nota entre 5 y 5.9, bueno, nota entre 6 y 7: exelente. el programa pide las notas
+y va entregando la info """
