@@ -68,7 +68,8 @@ for i in range(1,(quant+1)):
         while not flag2:
             whight = int(input("Ingrese la carga del vehiculo: "))
             flag2 = True
-            
+    except ValueError:
+        print()
     
 
 
