@@ -71,7 +71,7 @@ las notas estan en una escala del 1 al 7"""
 try:
     quantity = int(input("Ingrese la cantidad de notas que desea ingresar: "))
 except ValueError:
-   print("ingrese valores numericos")
+    print("ingrese valores numericos")
 count2 = 0
 
 #-----------------bloque de ejecucion----------------------------------
@@ -91,7 +91,7 @@ try:
     if quantity < 0:
         raise ValueError("El numero debe ser mayor a 0")
 except ValueError:
-   print("ingrese valores numericos")
+    print("ingrese valores numericos")
 total = 1
 #-----------------bloque de ejecucion-------------------------
 for i in range(1,(quantity+1)):
@@ -110,8 +110,8 @@ n = int(input("Ingrese cuantos enteros va a ingresar al programa: "))
 
 mayor = 0               #se elije un numero bajo para que cualquier numero que elija se mayor que el que elija el usuario
 
-menor = 10000000000000000000000000000000000000000000000000000000000000000 #se define un numero grande para que 
-                                                                          #cualquier primer numero que elija el usuario sea menor
+menor = 10000000000000000000000000000000000000000000000000000000000000000   #se define un numero grande para que 
+#                                                                            cualquier primer numero que elija el usuario sea menor
 
 #-----------------bloque de ejecucion-------------------------
 for i in range(1,(n+1)):
@@ -362,9 +362,5 @@ while f <= n:
     b = f 
 
 print(f"El ultimo numero menor que: {n} fue: {a}, porque el siguente es: {f}")
-print(f"En total fueron {count} numeros")'''
-
-#Ejercicio 5
-"""Notas: si tiene nota < 4: reprobado, nota entre 4 y 4.9: suficiende,
-nota entre 5 y 5.9, bueno, nota entre 6 y 7: exelente. el programa pide las notas
-y va entregando la info """
+print(f"En total fueron {count} numeros")
+'''
