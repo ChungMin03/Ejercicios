@@ -30,7 +30,7 @@ for i in range(1, (n2+1)):
 print(suma)
 '''
 
-#ejercicio 4
+#ejercicio 3
 """mostrar la tabla hasta el 10 del numero que ingrese el usuario"""
 '''
 #-----------------bloque de input---------------------------
@@ -46,7 +46,7 @@ for i in range(1,11):
 '''
 
 
-#ejercicio 5
+#ejercicio 4
 '''
 #-----------------bloque de input y variables---------------------------
 n4 = int(input("Ingrese un numero hasta el que quiere contar pares: "))
@@ -159,7 +159,6 @@ elif age > 64:
     print("Usted es adulto mayor")
 
  '''           
-
 
 #ejercicio 5
 """El usuario ingresa n, con n siendo el numero de temperatutas que desea ingresar en celsius,
@@ -287,12 +286,13 @@ if days != 0:
     print(f"El mejor dia fue de: {mejor}")
     print(f"El peor dia fue de: {peor}")
 '''
-'''
+
 #Ejercicio 3
 """Crea un menu de inventario.
 Opciones: 1- agregar stock, 2- retirar stock, 3- consultar stock, 4- salir.
 inicia con stock = 0, si no hay stock para retirar advertit sin descontar"""
 
+'''
 #-----------------bloque de inputs y variables---------------------
 stock = 0
 opcion = 0
@@ -342,11 +342,12 @@ while opcion != 4:
         print("Gestor de inventario terminado\nQue tenga buen dia.")
 '''
 
-'''
+
 #ejercicio 4
 """FIBONACCI, muestra la secuancia hasta n, con n siendo el numero que ingresa el usuario.
 muetra tambine la cantidad de numeros generados"""
 
+'''
 #-----------------bloque de inputs y variables---------------------
 n = int(input("ingrese el numero tope hasta el que quiera que se genere fibonacci: "))
 b = 0
@@ -369,3 +370,36 @@ print(f"En total fueron {count} numeros")
 """Notas: si tiene nota < 4: reprobado, nota entre 4 y 4.9: suficiende,
 nota entre 5 y 5.9, bueno, nota entre 6 y 7: exelente. el programa pide las notas
 y va entregando la info """
+
+'''
+#-----------------bloque de inputs----------------
+try:
+    quant = int(input("Ingrese la cantidad de notas: "))
+
+except ValueError:
+    print("Ingrese valores numericos")
+
+for i in range(1, (quant+1)):
+
+    try:
+        nota = float(input("Ingrese Nota del estudiante"))
+
+        if nota < 1 or nota > 7:
+            raise ValueError("La nota no puede ser menor a 1 ni mayor a 7")
+
+        elif nota < 4:
+            print("Reprobado")
+
+        elif nota >=4 and nota < 5:
+            print("Suficiente")
+
+        elif nota >= 5 and nota < 6:
+            print("Buena")
+        else:
+            print("Exelente")
+            
+    except ValueError as error:
+        print(f"ERROR: {error}")
+'''
+
+#------------------------nivel 4--------------------------------------
