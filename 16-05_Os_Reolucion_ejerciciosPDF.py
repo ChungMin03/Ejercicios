@@ -403,3 +403,9 @@ for i in range(1, (quant+1)):
 '''
 
 #------------------------nivel 4--------------------------------------
+#Ejercicio 1
+"""Simula una caja registradora.
+El cajero ingresa precios de productos hasta ingresar 0 para cerrar la venta.
+El sistema aplica: descuento de 10% si la compra supera $50.000,
+IVA del 19% sobre el total con descuento. Muestra subtotal,
+descuento (si aplica), monto con descuento, IVA y total final."""

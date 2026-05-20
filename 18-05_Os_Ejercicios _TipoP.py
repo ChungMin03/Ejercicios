@@ -3,7 +3,7 @@ Registro 1
 El programa debe preguntar al usuario cuántos vehículos desea registrar en esta sesión.
 •	Este valor debe ser un número entero positivo (mayor a 0).
 •	Si el usuario ingresa un valor inválido (letras, cero o negativo),
- se debe mostrar el siguiente mensaje y volver a pedir el dato:
+se debe mostrar el siguiente mensaje y volver a pedir el dato:
 
 "¡Cantidad inválida! Ingresa un entero positivo para continuar."
 
@@ -19,8 +19,8 @@ Ejemplos válidos: TRK001HD, VANMAX6, CARLITE2
 b) Capacidad de Carga (número entero positivo)
 •	El usuario ingresa la capacidad de carga en toneladas.
 •	Si se ingresa un valor inválido (letras, cero o negativo), se muestra
- el siguiente mensaje y se repite la solicitud:
- 
+el siguiente mensaje y se repite la solicitud:
+
 "¡Error logístico! Ingresa un número entero positivo para la capacidad de carga."
 
 Registro 3
@@ -34,6 +34,7 @@ El programa debe mantener contadores separados para vehículos Pesados y Ligeros
 
 
 """
+'''
 #-----------------bloque de ejecucion-------------------
 try:
     flag = False
@@ -41,12 +42,15 @@ try:
         quant = int(input("Ingrese la cantidad de vehiculos a registrar: "))
         flag = True
         if quant < 1:
-            raise ValueError("la cantidad debe ser positiva")
+            raise ValueError
         
-except ValueError as error1:
-    print(f"ERROR: {error1}")
+except ValueError:
+    print("¡Cantidad inválida! Ingresa un entero positivo para continuar.")
 
 error = ""
+peso = ""
+heavy = 0
+light = 0
 
 for i in range(1,(quant+1)):
     flag1 = False
@@ -66,15 +70,71 @@ for i in range(1,(quant+1)):
     try: 
         flag2 = False 
         while not flag2:
-            whight = int(input("Ingrese la carga del vehiculo: "))
+            weight = int(input("Ingrese la capacidad de carga del vehiculo: "))
             flag2 = True
+
+            if weight < 1:
+                raise ValueError
+            
     except ValueError:
-        print()
-    
+        print("¡Error logístico! Ingresa un número entero positivo para la capacidad de carga.")
+        
+        if weight > 55:
+            peso = "pesado"
+            heavy += 1
+
+        elif weight <= 55:
+            peso = "Ligero"
+            light += 1
+
+print(f"{heavy} Pesado y {light} Ligero")
+
+'''
 
 
+"""Requisito 1 — Inicio del programa
+•	Al iniciar, el programa debe mostrar el mensaje: ¡Bienvenido al sistema de gestión de localidades del Teatro Municipal!
+•	El sistema parte con 200 localidades disponibles precargadas.
+•	A continuación, debe mostrar el Menú Principal y mantenerse activo hasta que el usuario elija Salir.
 
+Requisito 2 — Menú Principal
+El menú principal debe mostrar las siguientes opciones:
 
+Opción	Descripción
+1	Localidades disponibles
+2	Vender localidades
+3	Devolver localidades
+4	Historial de ventas
+5	Salir
 
+Si el usuario ingresa una opción no válida (letras u opción fuera de rango), el programa debe capturar el error con manejo de excepciones y mostrar un mensaje claro antes de volver a mostrar el menú.
 
+Requisito 3 — Funcionalidades del sistema
+Opción 1 — Localidades Disponibles
+•	Muestra la cantidad actual de localidades disponibles en el teatro.
+•	Este valor debe reflejar los cambios producidos por ventas y devoluciones.
+
+Opción 2 — Vender Localidades
+•	El sistema solicita la cantidad de localidades a vender.
+•	Validaciones requeridas:
+•	La cantidad debe ser mayor a 0.
+•	No debe superar las localidades disponibles actuales.
+•	Si la venta es exitosa: se descuenta del disponible y se suma al historial de ventas.
+
+Opción 3 — Devolver Localidades
+•	El sistema solicita la cantidad de localidades a devolver.
+•	Validaciones requeridas:
+•	La cantidad debe ser mayor a 0.
+•	No puede exceder las 200 localidades (máximo del teatro).
+•	Si la devolución es exitosa: se suma al disponible y se resta del historial.
+
+Opción 4 — Historial de Ventas
+•	Muestra el total de ventas netas realizadas durante la sesión (ventas menos devoluciones).
+
+Opción 5 — Salir
+•	Finaliza el programa mostrando el mensaje:
+
+"Gracias por utilizar nuestro software, hasta la próxima."
+
+"""
 
