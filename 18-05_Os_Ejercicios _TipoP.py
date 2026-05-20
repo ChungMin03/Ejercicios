@@ -107,7 +107,8 @@ Opción	Descripción
 4	Historial de ventas
 5	Salir
 
-Si el usuario ingresa una opción no válida (letras u opción fuera de rango), el programa debe capturar el error con manejo de excepciones y mostrar un mensaje claro antes de volver a mostrar el menú.
+Si el usuario ingresa una opción no válida (letras u opción fuera de rango), el programa debe capturar el error
+con manejo de excepciones y mostrar un mensaje claro antes de volver a mostrar el menú.
 
 Requisito 3 — Funcionalidades del sistema
 Opción 1 — Localidades Disponibles
@@ -138,3 +139,63 @@ Opción 5 — Salir
 
 """
 
+#requisito 1
+print("¡Bienvenido al sistema de gestión de localidades del Teatro Municipal!")
+cant_localidades = 200
+
+
+#requisito 2 (Menú)
+opcion = 0
+while opcion != 5:
+    print("1.- Localidades disponibles")
+    print("2.- Vender localidades")
+    print("3.- Devolver localidades")
+    print("4.- Historial de ventas")
+    print("5.- Salir")
+    
+    try:
+        flag1 = False
+        while not flag1:
+            opcion = int(input("Ingrese la opcion que desea usar: "))
+            flag1 = True
+            if opcion<1 or opcion>5:
+                raise ValueError("El valor debe estar entre 1 y 5")
+    except ValueError as error:
+        print(f"ERROR: {error}")
+    
+    if opcion == 1:
+        print(f"Quedan un total de {cant_localidades} de localidades")
+    elif opcion == 2:
+        error = ""
+        flag2 = False
+        while not flag2:
+            try: 
+                venta = int(input("Ingrese la cantidad de localidades que desea comprar"))
+                if venta < 1:
+                    raise ValueError
+                if venta < cant_localidades:
+                    error += ", No puede comprar mas localidades de las que hay"
+                else:
+                    flag2 = True
+                    cant_localidades -= venta
+            except ValueError:
+                print(f"Ingrese enteros mayores que 0{error}")
+    elif opcion == 3:
+        error1 = ""
+        flag3 = False
+        while not flag3:
+            try: 
+                devolucion = int(input("Ingrese la cantidad de localidades que desea devolver"))
+                if venta < 1:
+                    raise ValueError
+                if venta < cant_localidades:
+                    error1 += ", No puede devolver mas localidades de las que hay"
+                else:
+                    flag2 = True
+                    cant_localidades -= venta
+            except ValueError:
+                print(f"Ingrese enteros mayores que 0{error}")
+                '''
+    elif opcion == 4:
+    elif opcion == 5:'''
+    
