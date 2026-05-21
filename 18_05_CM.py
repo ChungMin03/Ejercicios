@@ -114,17 +114,16 @@ print("*************************************************************************
 #Menu
 
 opcion = 984348924828432984993248932489329432.1
-flag_1 = False
 
 while opcion != 5:
-    print("************** MENÚ PRINCIPAL ********************")
+    flag_1 = False
     print("1. Localidades Disponibles")
     print("2. Vender Localidades")
     print("3. Devolver Disponibles")
     print("4. Historial de Ventas")
     print("5. Salir")
+    print("**************************************************")
     while not flag_1:
-        flag_1 = False
         try:
             opcion = int(input("Ingrese una opcion (1/5): "))
             if opcion < 1 or opcion > 5:
@@ -133,27 +132,38 @@ while opcion != 5:
                 flag_1 = True
         except ValueError:
             print("ERROR: Debe ingresar un numero entero entre 1 y 5.")
+            print("---------------------------------------------------------------------")
     
     if opcion == 1:
         print(f"Localidades disponibles: {cant_disponibles}")
 
     elif opcion == 2:
-        flag_2 = False
-        while not flag_2:
+        if cant_disponibles == 0:
+            print("ERROR: No quedan localidades disponibles. Todas han sido vendidas.")
+        else:
             flag_2 = False
-            try:
-                cant_ventas = int(input("Cantidad de Localidades a comprar: "))
-                if cant_ventas < 1:
-                    raise ValueError
-                elif cant_ventas > max_localidades:
-                    raise ValueError
-                else:
-                    flag_2 = True
-            except ValueError:
-                print(f"ERROR: Debe ingresar un numero entero mayor a cero. Ejemplo: 2.\nExcede la cantidad maxima de Localidades disponible: {cant_disponibles}")
+            while not flag_2:
+                errores = ""
+                try:
+                    cant_ventas = int(input("Cantidad de Localidades a comprar: "))
+                    if cant_ventas < 1:
+                        errores += "- Debe ingresar un numero entero mayor a cero. Ejemplo: 2.\n"
+                        raise ValueError
+                    if cant_ventas > cant_disponibles:
+                        errores += f"- Excede la cantidad maxima de Localidades disponible: {cant_disponibles}"
+                        raise ValueError
+                    if cant_ventas >= 1 and cant_ventas <= cant_disponibles:
+                        flag_2 = True
+                        cant_disponibles -= cant_ventas
+                        count_ventas += cant_ventas
+                except ValueError as error:
+                    if errores != "":
+                        print(f"{errores}")
+                    else:
+                        print("ERROR: Debe ingresar un numero entero mayor a cero.")
+                    print("---------------------------------------------------------------------")
 
-        cant_disponibles -= cant_ventas
-        count_ventas += cant_ventas
+    
 
     elif opcion == 3:
         flag_3 = False
@@ -169,17 +179,21 @@ while opcion != 5:
                     flag_3 = True
             except ValueError:
                 print("ERROR: Debe ingresar un numero mayor a cero. Ejemplo 2.\nNo se puede devolver, excede el máximo de entradas totales.")
+                print("---------------------------------------------------------------------")
         
         cant_disponibles += devolucion
         count_ventas -= devolucion
 
     elif opcion == 4:
-        print(f"Cantidad de localidades vendidas hasta ahora: {cant_ventas}")
+        print(f"Cantidad de localidades vendidas hasta ahora: {count_ventas}")
+        print("---------------------------------------------------------------------")
     
     elif opcion == 5:
         print("Gracias por usar nuestro software, hasta la proxima")
+        print("---------------------------------------------------------------------")
     else:
         print("Debe seleccionar una opcion del 1 al 5")
+        print("---------------------------------------------------------------------")
 
                 
                 
