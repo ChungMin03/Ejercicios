@@ -1,4 +1,4 @@
-"""
+
 #---------------- DEFINICION DE VARIABLES --------------
 vehiculo_flag = False
 errores = ""
@@ -11,7 +11,10 @@ ligero = 0
 while not vehiculo_flag:
     try:
         cant_vehi = int(input("Ingrese la cantidad de vehículos que desea registrar: "))
-        vehiculo_flag = True
+        if cant_vehi < 1:
+            raise ValueError
+        else:
+            vehiculo_flag = True
     except ValueError:
         print("¡Cantidad inválida! Ingresa un entero positivo para continuar.")
         print("---------------------------------------------------------------------")
@@ -35,7 +38,6 @@ while count_vehi <= cant_vehi:
             
             if capacidad_carga <= 0:
                 print("¡Error logístico! Ingresa un número entero positivo para la capacidad de carga.")
-                capacidad_flag = False
             else:
                 capacidad_flag = True
                 #REQUISITO 3
@@ -52,7 +54,7 @@ while count_vehi <= cant_vehi:
     count_vehi += 1
 
 #REQUISITO 4
-print(f"¡La flota cuenta con {pesado} vehículos Pesados y {ligero} vehículos Ligeros! ¡Rutas asignadas!")"""
+print(f"¡La flota cuenta con {pesado} vehículos Pesados y {ligero} vehículos Ligeros! ¡Rutas asignadas!")
 
 """Requisito 1 — Inicio del programa
 •	Al iniciar, el programa debe mostrar el mensaje: ¡Bienvenido al sistema de gestión de localidades del Teatro Municipal!
