@@ -1,11 +1,14 @@
 
-#---------------- DEFINICION DE VARIABLES --------------
+#---------------- DECLARACION DE VARIABLES --------------
 vehiculo_flag = False
 errores = ""
 pesado = 0
 ligero = 0
 
 #--------------- BLOQUE DE EJECUCION ------------------
+
+#INICIO EJERCICIO 1
+print("------------------- INICIO EJERCICIO 1 ---------------------------")
 
 #REQUISITO 1
 while not vehiculo_flag:
@@ -37,7 +40,7 @@ while count_vehi <= cant_vehi:
             capacidad_carga = int(input("Ingrese la capacidad de carga del vehículo (toneladas): "))
             
             if capacidad_carga <= 0:
-                print("¡Error logístico! Ingresa un número entero positivo para la capacidad de carga.")
+                raise ValueError
             else:
                 capacidad_flag = True
                 #REQUISITO 3
@@ -55,7 +58,8 @@ while count_vehi <= cant_vehi:
 
 #REQUISITO 4
 print(f"¡La flota cuenta con {pesado} vehículos Pesados y {ligero} vehículos Ligeros! ¡Rutas asignadas!")
-
+print("------------------- FIN EJERCICIO 1 ---------------------------")
+print("\n")
 """Requisito 1 — Inicio del programa
 •	Al iniciar, el programa debe mostrar el mensaje: ¡Bienvenido al sistema de gestión de localidades del Teatro Municipal!
 •	El sistema parte con 200 localidades disponibles precargadas.
@@ -101,10 +105,15 @@ Opción 5 — Salir
 "Gracias por utilizar nuestro software, hasta la próxima."
 
 """
+
 #----------------DECLARACION DE VARIABLES ------------------
 max_localidades = 200 #NO SE MODIFICA
 cant_disponibles = 200
 count_ventas = 0
+
+#INICIO EJERCICIO 2
+print("------------------- INICIO EJERCICIO 2 ---------------------------")
+
 
 #Bienvenida
 print("**************************************************************************")
@@ -113,7 +122,6 @@ print("*************************************************************************
 
 #---------------BLOQUE DE EJECUCION---------------------------
 
-#Menu
 
 opcion = 984348924828432984993248932489329432.1
 
@@ -133,7 +141,7 @@ while opcion != 5:
             else:
                 flag_1 = True
         except ValueError:
-            print("ERROR: Debe ingresar un numero entero entre 1 y 5.")
+            print("ERROR: - Debe ingresar un numero entero entre 1 y 5.")
             print("---------------------------------------------------------------------")
     
     if opcion == 1:
@@ -141,7 +149,7 @@ while opcion != 5:
 
     elif opcion == 2:
         if cant_disponibles == 0:
-            print("ERROR: No quedan localidades disponibles. Todas han sido vendidas.")
+            print("ERROR: - No quedan localidades disponibles. Todas han sido vendidas.")
         else:
             flag_2 = False
             while not flag_2:
@@ -162,14 +170,14 @@ while opcion != 5:
                     if errores1 != "":
                         print(f"ERROR: {errores1}")
                     else:
-                        print("ERROR: Debe ingresar un numero entero mayor a cero.")
+                        print("ERROR: - Debe ingresar un numero entero mayor a cero.")
                     print("---------------------------------------------------------------------")
 
     
 
     elif opcion == 3:
         if cant_disponibles == max_localidades:
-            print("ERROR: Maximo de localidades disponibles, no se pueden realizar devoluciones.")
+            print("ERROR: - Maximo de localidades disponibles, no se pueden realizar devoluciones.")
         else:
             flag_3 = False
             while not flag_3:
@@ -177,10 +185,10 @@ while opcion != 5:
                 try:
                     devolucion = int(input("¿Cuantas Localidades devolverá?: "))
                     if devolucion + cant_disponibles > max_localidades:
-                        errores2 += f"No se pueden devolver {devolucion} entradas, excede el maximo de entradas totales."
+                        errores2 += f"- No se pueden devolver {devolucion} entradas, excede el maximo de entradas totales."
                         raise ValueError
                     if devolucion < 1:
-                        errores2 += f"Debe ingresar un numero mayor a cero. Ejemplo: 2."
+                        errores2 += f"- Debe ingresar un numero mayor a cero. Ejemplo: 2."
                         raise ValueError
                     else:
                         flag_3 = True
@@ -190,7 +198,7 @@ while opcion != 5:
                     if errores2 != "":
                         print(f"ERROR: {errores2}")
                     else:
-                        print("Debe ingresar un numero entero mayor a cero. Ejemplo: 2.")
+                        print("ERROR: - Debe ingresar un numero entero mayor a cero. Ejemplo: 2.")
                     print("---------------------------------------------------------------------")
         
 
@@ -201,9 +209,8 @@ while opcion != 5:
     elif opcion == 5:
         print("Gracias por usar nuestro software, hasta la proxima")
         print("---------------------------------------------------------------------")
-    else:
-        print("Debe seleccionar una opcion del 1 al 5")
+    else: #Este else nunca se llega a ejecutar ya que el if opcion < 1 or opcion > 5: Raise ValueError del principio cubre este error antes :/
+        print("ERROR: - Debe seleccionar una opcion del 1 al 5")
         print("---------------------------------------------------------------------")
 
-                
-                
+print("------------------- FIN EJERCICIO 2 ---------------------------")
