@@ -60,6 +60,8 @@ while count_vehi <= cant_vehi:
 print(f"¡La flota cuenta con {pesado} vehículos Pesados y {ligero} vehículos Ligeros! ¡Rutas asignadas!")
 print("------------------- FIN EJERCICIO 1 ---------------------------")
 print("\n")
+
+
 """Requisito 1 — Inicio del programa
 •	Al iniciar, el programa debe mostrar el mensaje: ¡Bienvenido al sistema de gestión de localidades del Teatro Municipal!
 •	El sistema parte con 200 localidades disponibles precargadas.
