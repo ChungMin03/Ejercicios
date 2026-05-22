@@ -154,6 +154,7 @@ while not menu:
             print("Ingrese el asiento que desea reservar:")
             # Se utiliza una comprensión de listas para contar el número de asientos ocupados ("X") en la matriz de asientos. 
             # La función sum() se encarga de sumar los conteos de cada fila para obtener el total de asientos ocupados.
+            # La veriable fila no es la misma que se utiliza en la función de reservar asiento, ya que esta variable solo existe dentro del bloque de código de esa función.
             ocupadas = sum(fila.count("X") for fila in matriz_asientos)
 
             # Para evitar errores, se valida que existan asientos disponibles antes de intentar reservar un asiento. Si no hay asientos disponibles, el programa termina el ciclo.
