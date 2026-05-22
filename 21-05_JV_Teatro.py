@@ -72,10 +72,13 @@ def asiento_ocupado():
                 # Se resta 1 a la fila y columna para ajustar a los índices de la matriz (que comienzan en 0)
                 if 0 <= (fila - 1) <= 9 and 0 <= (columna - 1) <= 19:
                     if matriz_asientos[(fila - 1)][(columna - 1)] == "X":
-                        print("El asiento ya está ocupado.")
+                        print("El asiento ya está ocupado.\n")
+                        ocupar_asiento = False
+                        # Se retorna False para indicar que no se pudo reservar el asiento, lo que evita incrementar el historial de ventas.
+                        return False
                     else:
                         matriz_asientos[(fila - 1)][(columna - 1)] = "X"
-                        print("Asiento reservado exitosamente.")
+                        print("Asiento reservado exitosamente.\n")
                         ocupar_asiento = True
 
         except ValueError:
@@ -99,10 +102,12 @@ def devolver_asiento():
             else:
                 if 0 <= (fila - 1) <= 9 and 0 <= (columna - 1) <= 19:
                     if matriz_asientos[(fila - 1)][(columna - 1)] == "*":
-                        print("El asiento ya está disponible.")
+                        print("El asiento ya está disponible.\n")
+                        devolver_asiento = False
+                        return False
                     else:
                         matriz_asientos[(fila - 1)][(columna - 1)] = "*"
-                        print("Asiento devuelto exitosamente.")
+                        print("Asiento devuelto exitosamente.\n")
                         devolver_asiento = True
             
         except ValueError:
@@ -134,6 +139,10 @@ while not menu:
     if opcion == 1:
         
         print("\nLocalidades disponibles:")
+        print("|                                                        |")
+        print("|                 ESCENARIO PRINCIPAL                    |")
+        print("|________________________________________________________|")
+        print("                                                          ")
         for fila in matriz_asientos:
             # Se utiliza el método join para convertir cada fila de la matriz de asientos en una cadena de texto, separando los elementos con dos espacios ("  ").
             print("  ".join(fila))
@@ -142,7 +151,7 @@ while not menu:
     elif opcion == 2:
         ciclo = False
         while not ciclo:
-            print("Ingrese el asiento que desea reservar")
+            print("Ingrese el asiento que desea reservar:")
             # Se utiliza una comprensión de listas para contar el número de asientos ocupados ("X") en la matriz de asientos. 
             # La función sum() se encarga de sumar los conteos de cada fila para obtener el total de asientos ocupados.
             ocupadas = sum(fila.count("X") for fila in matriz_asientos)
