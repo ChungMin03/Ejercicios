@@ -410,19 +410,20 @@ El sistema aplica: descuento de 10% si la compra supera $50.000,
 IVA del 19% sobre el total con descuento. Muestra subtotal,
 descuento (si aplica), monto con descuento, IVA y total final."""
 
+'''
 #-----------------bloque de inputs y variables--------------------------
 total = 0
-price = 0
+price = ""
 discount = 0
-try:
-    while price != 0:
+while price != 0:
+    try:
         price = float(input("Ingrese el precio de las compras, para detener ingrese '0'"))
         if price < 0:
             raise ValueError
         else:
             total += price
-except ValueError:
-    print("Ingrese valores numericos positivos")
+    except ValueError:
+        print("Ingrese valores numericos positivos")
 
 #-----------------bloque de ejecucion---------------------------
 
@@ -437,3 +438,5 @@ if total != 0:
         print(f"El descuento es de: {discount}\nEl total con descuento es de: {total}")
     print(f"Total con IVA: {new_total}")
     print(f"IVA: {iva}")
+print("ejecucion")
+'''
