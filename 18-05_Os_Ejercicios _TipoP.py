@@ -142,11 +142,13 @@ Opción 5 — Salir
 #requisito 1
 print("¡Bienvenido al sistema de gestión de localidades del Teatro Municipal!")
 cant_localidades = 200
+max_locaidades = 200
 
 
 #requisito 2 (Menú)
 opcion = 0
 while opcion != 5:
+    error_menu = ""
     print("1.- Localidades disponibles")
     print("2.- Vender localidades")
     print("3.- Devolver localidades")
@@ -159,43 +161,74 @@ while opcion != 5:
             opcion = int(input("Ingrese la opcion que desea usar: "))
             flag1 = True
             if opcion<1 or opcion>5:
-                raise ValueError("El valor debe estar entre 1 y 5")
+                raise ValueError
     except ValueError as error:
-        print(f"ERROR: {error}")
-    
+        print("Ingrese un valor numerico entero y entre 1 y 5")
+
     if opcion == 1:
         print(f"Quedan un total de {cant_localidades} de localidades")
+
     elif opcion == 2:
-        error = ""
-        flag2 = False
-        while not flag2:
-            try: 
-                venta = int(input("Ingrese la cantidad de localidades que desea comprar"))
-                if venta < 1:
-                    raise ValueError
-                if venta < cant_localidades:
-                    error += ", No puede comprar mas localidades de las que hay"
-                else:
-                    flag2 = True
-                    cant_localidades -= venta
-            except ValueError:
-                print(f"Ingrese enteros mayores que 0{error}")
+        if cant_localidades == 0:
+            print("No hay localidades disponibles")
+
+        elif cant_localidades != 0:
+            flag2 = False
+            while not flag2:
+                error = ""
+                try: 
+                    venta = int(input("Ingrese la cantidad de localidades que desea comprar: "))
+                    if venta < 1:
+                        error += "La cantidad a comprar no puede ser menor a 1\n"
+                        raise ValueError
+                    
+                    if venta > cant_localidades:
+                        error += "No puede comprar mas localidades de las que hay"
+                        raise ValueError
+                    
+                    else:
+                        flag2 = True
+                        cant_localidades -= venta
+
+                except ValueError:
+                    if error != "":
+                        print(error)
+
+                    else:
+                        print(f"Ingrese valores numericos")
+
     elif opcion == 3:
-        error1 = ""
-        flag3 = False
-        while not flag3:
-            try: 
-                devolucion = int(input("Ingrese la cantidad de localidades que desea devolver"))
-                if venta < 1:
-                    raise ValueError
-                if venta < cant_localidades:
-                    error1 += ", No puede devolver mas localidades de las que hay"
-                else:
-                    flag2 = True
-                    cant_localidades -= venta
-            except ValueError:
-                print(f"Ingrese enteros mayores que 0{error}")
+                if cant_localidades == max_locaidades:
+                    print("Cantidad de localidades al maximo, no se pueden hacer devoluciones")
+
+                elif cant_localidades != max_locaidades:
+                    flag_devolucion = False
+
+                    while not flag_devolucion:
+                        error_devolucion = ""
+                        try: 
+                            devolucion = int(input("Ingrese la cantidad de localidades que desea devolver: "))
+                            if devolucion < 1:
+                                error_devolucion += "La cantidad a devolver no puede ser menor a 1\n"
+                                raise ValueError
+                            
+                            if devolucion + cant_localidades > max_locaidades:
+                                error_devolucion += "No pueden devolverse mas localidades del maximo disponible a la venta"
+                                raise ValueError
+
+                            else:
+                                cant_localidades += devolucion
+                                flag_devolucion = True
+
+                        except ValueError:
+                            if error_devolucion != "":
+                                print(error_devolucion)
+
+                            else:
+                                print("Ingrese valores numericos")
+
                 '''
     elif opcion == 4:
-    elif opcion == 5:'''
-    
+    '''
+    elif opcion == 5:
+        print("Gracias por utilizar nuestro software, hasta la próxima.")
