@@ -143,22 +143,22 @@ while opcion != 5:
         else:
             flag_2 = False
             while not flag_2:
-                errores = ""
+                errores1 = ""
                 try:
                     cant_ventas = int(input("Cantidad de Localidades a comprar: "))
                     if cant_ventas < 1:
-                        errores += "- Debe ingresar un numero entero mayor a cero. Ejemplo: 2.\n"
+                        errores1 += "- Debe ingresar un numero entero mayor a cero. Ejemplo: 2.\n"
                         raise ValueError
                     if cant_ventas > cant_disponibles:
-                        errores += f"- Excede la cantidad maxima de Localidades disponible: {cant_disponibles}"
+                        errores1 += f"- Excede la cantidad maxima de Localidades disponible: {cant_disponibles}"
                         raise ValueError
                     if cant_ventas >= 1 and cant_ventas <= cant_disponibles:
                         flag_2 = True
                         cant_disponibles -= cant_ventas
                         count_ventas += cant_ventas
                 except ValueError as error:
-                    if errores != "":
-                        print(f"{errores}")
+                    if errores1 != "":
+                        print(f"ERROR: {errores1}")
                     else:
                         print("ERROR: Debe ingresar un numero entero mayor a cero.")
                     print("---------------------------------------------------------------------")
@@ -166,23 +166,32 @@ while opcion != 5:
     
 
     elif opcion == 3:
-        flag_3 = False
-        while not flag_3:
+        if cant_disponibles == max_localidades:
+            print("ERROR: Maximo de localidades disponibles, no se pueden realizar devoluciones.")
+        else:
             flag_3 = False
-            try:
-                devolucion = int(input("¿Cuantas Localidades devolverá?: "))
-                if devolucion + cant_disponibles > max_localidades:
-                    raise ValueError
-                if devolucion < 1:
-                    raise ValueError
-                else:
-                    flag_3 = True
-            except ValueError:
-                print("ERROR: Debe ingresar un numero mayor a cero. Ejemplo 2.\nNo se puede devolver, excede el máximo de entradas totales.")
-                print("---------------------------------------------------------------------")
+            while not flag_3:
+                errores2 = ""
+                flag_3 = False
+                try:
+                    devolucion = int(input("¿Cuantas Localidades devolverá?: "))
+                    if devolucion + cant_disponibles > max_localidades:
+                        errores2 += f"No se pueden devolver {devolucion} entradas, excede el maximo de entradas totales."
+                        raise ValueError
+                    if devolucion < 1:
+                        errores2 += f"Debe ingresar un numero mayor a cero. Ejemplo: 2."
+                        raise ValueError
+                    else:
+                        flag_3 = True
+                    cant_disponibles += devolucion
+                    count_ventas -= devolucion
+                except ValueError:
+                    if errores2 == "":
+                        print(f"ERROR: {errores2}")
+                    else:
+                        print("Debe ingresar un numero entero mayor a cero. Ejemplo: 2.")
+                    print("---------------------------------------------------------------------")
         
-        cant_disponibles += devolucion
-        count_ventas -= devolucion
 
     elif opcion == 4:
         print(f"Cantidad de localidades vendidas hasta ahora: {count_ventas}")
