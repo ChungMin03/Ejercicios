@@ -172,7 +172,6 @@ while opcion != 5:
             flag_3 = False
             while not flag_3:
                 errores2 = ""
-                flag_3 = False
                 try:
                     devolucion = int(input("¿Cuantas Localidades devolverá?: "))
                     if devolucion + cant_disponibles > max_localidades:
@@ -186,7 +185,7 @@ while opcion != 5:
                     cant_disponibles += devolucion
                     count_ventas -= devolucion
                 except ValueError:
-                    if errores2 == "":
+                    if errores2 != "":
                         print(f"ERROR: {errores2}")
                     else:
                         print("Debe ingresar un numero entero mayor a cero. Ejemplo: 2.")
