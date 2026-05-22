@@ -409,3 +409,34 @@ El cajero ingresa precios de productos hasta ingresar 0 para cerrar la venta.
 El sistema aplica: descuento de 10% si la compra supera $50.000,
 IVA del 19% sobre el total con descuento. Muestra subtotal,
 descuento (si aplica), monto con descuento, IVA y total final."""
+
+'''
+#-----------------bloque de inputs y variables--------------------------
+total = 0
+price = ""
+discount = 0
+while price != 0:
+    try:
+        price = float(input("Ingrese el precio de las compras, para detener ingrese '0'"))
+        if price < 0:
+            raise ValueError
+        else:
+            total += price
+    except ValueError:
+        print("Ingrese valores numericos positivos")
+
+#-----------------bloque de ejecucion---------------------------
+
+if total > 50000:
+    discount = total * 0.1
+    total *= 0.9
+iva = total * 0.19
+new_total = total * 0.81
+if total != 0:
+    if discount != 0:
+        print(f"Compra mayor de 50.000, se aplica descuento del 10%")
+        print(f"El descuento es de: {discount}\nEl total con descuento es de: {total}")
+    print(f"Total con IVA: {new_total}")
+    print(f"IVA: {iva}")
+print("ejecucion")
+'''
