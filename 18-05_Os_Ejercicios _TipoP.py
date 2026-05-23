@@ -139,6 +139,7 @@ Opción 5 — Salir
 
 """
 
+'''
 #requisito 1
 print("¡Bienvenido al sistema de gestión de localidades del Teatro Municipal!")
 cant_localidades = 200
@@ -227,8 +228,8 @@ while opcion != 5:
                             else:
                                 print("Ingrese valores numericos")
 
-                '''
+
     elif opcion == 4:
-    '''
     elif opcion == 5:
         print("Gracias por utilizar nuestro software, hasta la próxima.")
+'''
