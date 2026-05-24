@@ -41,6 +41,7 @@ el programa debe desplegar en pantalla el siguiente mensaje de cierre con los co
 
 #Ejercicio 1
 #-----------------bloque de variables e inputs--------------------
+#entrada de la cantidad de maletas(Requisito 1)
 flag_cant = False
 while not flag_cant:
     error_quant = ""
@@ -55,10 +56,18 @@ while not flag_cant:
         print("¡Cantidad inválida! Ingresa un entero positivo para continuar.")
     
 print(f"Usted ingresará {quant} maletas")
+#----------------------------------------------
 
+#variables contadoras del peso
 heavy = 0
 normal = 0
+#-----------------------------
+
+#variable contadora de maletas
 n = 0
+#-----------------------------
+
+#etiquetado y peso de las maletas(Requisito 2)
 while n != quant:
     n += 1
     try:
@@ -69,7 +78,11 @@ while n != quant:
     except ValueError:
         print("Etiqueta invalida, Debe tener al menos 5 caracteres sin contar espacios")
 
+    #bandera para dentener el while de a continuacion
     flag_weight = True
+    #------------------------------------------------
+
+    #while para capturar errores con el peso sin reiniciar el primer while
     while flag_weight:
         try:
             weight = int(input(f"Ingrese el peso de la maleta N°{n} en KG: "))
@@ -80,9 +93,13 @@ while n != quant:
                 flag_weight = False
         except ValueError:
             print("¡Error de pesaje! Ingresa un número entero positivo para el peso de la maleta")
+    #---------------------------------------------------------------------  
+      
+#----------------------------------------------
 
 #-----------------bloque de ejecucion---------------------
-#parte del mismo while pero comple la funcion de diferenciar los pesos, por lo que pasa a ser parte de la ejecucion.
+#parte del mismo while pero comple la funcion de diferenciar los pesos,
+# por lo que pasa a ser parte de la ejecucion.
     if weight < 24:
         normal += 1
     elif weight > 23:
