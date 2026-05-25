@@ -294,15 +294,21 @@ while opcion != 5:
 
     #opcion 4, historial de ventas
     if opcion == 4:
-        print(f"Ventas netas: {venta-devolucion}")
-        print(f"Despachos totales: {venta}, en {cant_desp} instancias de venta")
-        print(f"Devoluciones totales: {devolucion}, en {cant_devo} instancias de devoluciones")
-        print(f"Cantidades despachadas: {historial_despacho}")
-        print(f"Cantidades devueltas: {historial_devolucion}")
+        if cant_devo == 0 and cant_desp == 0:
+            print("No hay actividad en la app registrada")
+        else:
+            print(f"Ventas netas: {venta-devolucion}")
+            print(f"Despachos totales: {venta}, en {cant_desp} instancias de venta")
+            print(f"Devoluciones totales: {devolucion}, en {cant_devo} instancias de devoluciones")
+            print(f"Cantidades despachadas: {historial_despacho}")
+            print(f"Cantidades devueltas: {historial_devolucion}")
     #------------------------------
 
     #opcion 5, despedida
     if opcion == 5:
-        print("Gracias por utilizar nuestro software, hasta la próxima.")
+        if cant_devo == 0 and cant_desp == 0:
+            print("chao pescao")
+        else:
+            print("Gracias por utilizar nuestro software, hasta la próxima.")
     #-------------------
         
