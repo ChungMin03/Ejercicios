@@ -30,9 +30,9 @@ while n != quant:
     try:
         data = input(f"Ingrese el rut N°{n} con digito verificador y sin puntos ni guión:\n").replace(" ","")
         if len(data) < 8 or len(data) > 9:
-            error_data = "RUT INVALIDO: ingrese nuevamente el rut sin puntos ni gión, y con digito verificador\n"
+            print("RUT INVALIDO: ingrese nuevamente el rut sin puntos ni gión, y con digito verificador\n")
             n -= 1
-            raise ValueError
+            continue
         balance = int(input("Ingrese el saldo inicial de la cuenta:\n"))
 
         if balance < 0:
@@ -54,3 +54,4 @@ while n != quant:
 
 print(f"¡registro completado! {premiun} clientes premiun y {standar} cleintes estandar incorporados al sistema")
 
+~
