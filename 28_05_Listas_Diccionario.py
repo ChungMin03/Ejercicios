@@ -54,7 +54,7 @@ diccionario = {
 }
 
 #mostrar elemento del diccionario
-print(diccionario["activo"])
+print(diccionario["nombre"])
 print(f"Segundo fono: {diccionario['fonos'][1]}")
 
 #Insertar elemento a un diccionario
@@ -67,7 +67,9 @@ diccionario["fonos"][1] = 999999999999
 
 #eliminar elementos del diccionario
 del diccionario["activo"]
+print(diccionario["fonos"])
 diccionario["fonos"].pop(1)
+print(diccionario["fonos"])
 diccionario["fonos"].remove(987654321)
 
 print(diccionario)
