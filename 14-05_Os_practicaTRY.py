@@ -6,7 +6,7 @@
  la opcion 3 reinicia los contadores"""
 
 
-
+"""
 #-------------------Bloque de variables---------------------------------------------------------
 
 opcion = 0
@@ -116,7 +116,7 @@ while opcion != 4:
 
 
 """
-#--------------intento con lista ---------------------
+#--------------intento con lista ---------------------"""
 #definimos variables
 lista_nivel = []
 flag1 = False
