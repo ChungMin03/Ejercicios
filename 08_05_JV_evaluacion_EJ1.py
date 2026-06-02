@@ -49,10 +49,7 @@ elif quintil == 1 or quintil == 2 or quintil == 3:
 else:
     nuevo_kit = kit
     
-# Bloque imprimir en pantalla
 
-print(f"Valor de la cuota es: {nueva_cuota_mensual}")
-print(f"El valor de Kit es: {nuevo_kit}")
 
       
     
