@@ -15,9 +15,8 @@ lista_dias = ["Lunes","Martes","miercoles","Jueves","Viernes","Sabado","Domingo"
 dia = 0
 #----------------------------------------------------
 
+
 #-----------------bloque de ejecucion-----------------
-
-
 while dia != 7:
     dia += 1
     try:
@@ -31,10 +30,11 @@ while dia != 7:
     #se agrega la temperatura a la lista
     temp_diaria.append(temp)
 
-top = max(temp_diaria)
-low = min(temp_diaria)
-day_max = temp_diaria.index(top)
-day_min = temp_diaria.index(low)
+#buscamos el indice de donde está la temperatura máxima y mínima para relacionarlo con el día
+#definimos la variable day_max y day_min como variables que almacenan el lugar donde está
+#nuestra temperatura mas alta y baja, para conectarlo con su respectivo día
+day_max = temp_diaria.index(max(temp_diaria))
+day_min = temp_diaria.index(min(temp_diaria))
 #------------------------------------------------------
 
 
