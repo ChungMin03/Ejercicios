@@ -32,15 +32,18 @@ while dia != 7:
 
 #buscamos el indice de donde está la temperatura máxima y mínima para relacionarlo con el día
 #definimos la variable day_max y day_min como variables que almacenan el lugar donde está
-#nuestra temperatura mas alta y baja, para conectarlo con su respectivo día
+#nuestra temperatura mas alta y baja, para anexarlo con su respectivo día
 day_max = temp_diaria.index(max(temp_diaria))
 day_min = temp_diaria.index(min(temp_diaria))
 #------------------------------------------------------
 
 
 #-----------------bloque de prints----------------------
+#repetimos para la cantidad de días cual fue la temperatura con su respectivo día
 for n in range(7):
     print(f"La temperatura del día {lista_dias[n]} fue {temp_diaria[n]}")
+#--------------------------------------------------------------------------------
+
 print(f"El día con mayor temperatura fue el {lista_dias[day_max]} con {max(temp_diaria)} grados")
 print(f"El día con menor temperatura fue el {lista_dias[day_min]} con {min(temp_diaria)} grados")
 #-------------------------------------------------------
