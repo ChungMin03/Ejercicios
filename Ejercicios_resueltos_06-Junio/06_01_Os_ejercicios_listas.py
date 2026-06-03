@@ -22,13 +22,14 @@ while dia != 7:
     try:
         #preguntamos por la temperatura del día 
         temp = float(input(f"Ingrese la temperatura del día N°{dia}: "))
-    
+        #--------------------------------------
     except ValueError:
         dia -= 1
         print("Ingrese valores numericos")
     
     #se agrega la temperatura a la lista
     temp_diaria.append(temp)
+    #-----------------------------------
 
 #buscamos el indice de donde está la temperatura máxima y mínima para relacionarlo con el día
 #definimos la variable day_max y day_min como variables que almacenan el lugar donde está
@@ -47,3 +48,6 @@ for n in range(7):
 print(f"El día con mayor temperatura fue el {lista_dias[day_max]} con {max(temp_diaria)} grados")
 print(f"El día con menor temperatura fue el {lista_dias[day_min]} con {min(temp_diaria)} grados")
 #-------------------------------------------------------
+
+
+
