@@ -5,4 +5,4 @@ Actuales colaboradores:
     - Nicolas Rodriguez -> NR
     - Carlos Munoz -> CM
     - Enrique Valenzuela -> EV
-    - Osvaldo Ruiz -> OS
+    - Osvaldo Ruiz -> OR
