@@ -77,7 +77,7 @@ def solicitarDatos():
         rut = input("Ingrese su rut (sin puntos y con guion): ")
         if "-" in rut:
             lista_rut = rut.split("-")
-            if lista_rut[0].isnumeric() and (lista_rut[1].isnumeric() or lista_rut[1].upper() == "K"):
+            if lista_rut[0].isnumeric() and lista_rut[1]!= "0" and (lista_rut[1].isnumeric() or lista_rut[1].upper() == "K"):
                 flag_rut = True
             else:
                 print("Error: Rut ingresado no es valido")
