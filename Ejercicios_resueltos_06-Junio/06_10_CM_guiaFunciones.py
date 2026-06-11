@@ -64,11 +64,20 @@ def encabezado():
     print("==========================================")
     
 def solicitarDatos():
+    #creamos diccionario para guardar los datos
+    diccionario_datos = {
+        "Nombre" : "",
+        "Semestre" : "",
+        "Carrera" : "",
+        "Rut" : "",
+        "Edad" : ""
+    }
     flag_nombre = False
     while not flag_nombre:
         name = input("Ingrese su nombre: ")
         if name.replace(" ","").isalpha():
             flag_nombre = True
+            diccionario_datos["Nombre"] = name
         else:
             print("Error: Contiene numeros o caracteres invalidos.")
     
@@ -79,6 +88,7 @@ def solicitarDatos():
             lista_rut = rut.split("-")
             if lista_rut[0].isnumeric() and lista_rut[1]!= "0" and (lista_rut[1].isnumeric() or lista_rut[1].upper() == "K"):
                 flag_rut = True
+                diccionario_datos["Rut"] = rut
             else:
                 print("Error: Rut ingresado no es valido")
         else:
@@ -92,15 +102,35 @@ def solicitarDatos():
                 raise ValueError
             else:
                 flag_edad = True
+                diccionario_datos["Edad"] = edad
         except ValueError:
             print("Error: Ingrese una edad valida.")
-            
-    return name, rut, edad
 
-def mostrarFicha(nombre, rut, edad):
+    flag_semestre = False
+    while not flag_semestre:
+        try:
+            semestre = int(input("Ingrese el semestre que cursa: "))
+            if semestre < 1:
+                raise ValueError
+            else:
+                flag_semestre = True
+                diccionario_datos["Semestre"] = semestre
+        except ValueError:
+            print("Error: Ingrese un semestre valido.")
+
+    flag_carrera = False
+    while not flag_carrera:
+        carrera = input("Ingrese su carrera: ")
+        flag_carrera = True
+        diccionario_datos["Carrera"] = carrera
+            
+    return diccionario_datos
+
+def mostrarFicha(diccionario_datos):
     print("================= FICHA DEL ESTUDIANTE =================")
-    print(f"Nombre: {nombre}\nRut: {rut}\nEdad: {edad}")
+    for llave, valor in diccionario_datos.items():
+        print(f"{llave}: {valor}")
     
-"""encabezado()
-nombre, rut, edad = solicitarDatos()
-mostrarFicha(nombre, rut, edad)"""
+encabezado()
+diccionario = solicitarDatos()
+mostrarFicha(diccionario)
