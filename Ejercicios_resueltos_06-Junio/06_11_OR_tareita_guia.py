@@ -8,6 +8,7 @@ usando return para comunicar resultados entre funciones.
 Comunicación entre funciones mediante return
 """
 
+#funcion propina
 def desglose_propina():
 
     while True:
@@ -15,8 +16,10 @@ def desglose_propina():
             subtotal = int(input("Ingrese subtotal a pagar: "))
             if subtotal <= 0:
                 print("Ingrese un monto valido")
+            else:
+                break
         except ValueError:
-            print("Ingrese valoers numericos")
+            print("Ingrese valores numericos")
 
     print("Desea ingresar propina?")
     print("1.- 10%")
@@ -46,7 +49,22 @@ def desglose_propina():
     elif opcion == 4:
         total = subtotal
 
+    propina = total - subtotal
+
     cuenta = {}
-    cuenta
+    cuenta["Subtotal"] = subtotal
+    cuenta["Propina"] = propina
+    cuenta["Total"] = total
+    return cuenta 
+
+
+
+
+#programa real
+
+datos = desglose_propina()
+for key, value in datos.items:
+    print(f"{key} --------------> {value}")
+
 
 
