@@ -41,17 +41,14 @@
     
 def calcularTotal(subtotal, opcion_propina):
     if opcion_propina == 1:
-        propina = 1.1
         valor_propina = subtotal * 0.1
-        total = subtotal * propina
+        total = subtotal + valor_propina
     elif opcion_propina == 2:
-        propina = 1.15
         valor_propina = subtotal * 0.15
-        total = subtotal * propina
+        total = subtotal + valor_propina
     else:
-        propina = 1.2
         valor_propina = subtotal * 0.2
-        total = subtotal * propina
+        total = subtotal + valor_propina
     return {"subtotal": subtotal,
             "propina" : valor_propina,
             "total" : total
@@ -67,6 +64,7 @@ def mostrarBoleta(boleta):
 #codigo principal
 flag_subtotal = False
 while not flag_subtotal:
+    print("-------------------- Valor neto --------------------")
     try:
         subtotal = float(input("Ingrese el valor de la cuenta: "))
         if subtotal < 1:
