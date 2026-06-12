@@ -29,7 +29,7 @@ def desglose_propina():
 
     while True:
         try:
-            opcion = int("Ingrese la opcion (1-4): ")
+            opcion = int(input("Ingrese la opcion (1-4): "))
             if opcion > 4 or opcion < 1:
                 print("Ingrese un valor dentro de las opciones")
             else:
@@ -37,14 +37,15 @@ def desglose_propina():
         except ValueError:
             print("Ingrese un valor numerico valido")
     
+    total = 0
     if opcion == 1:
-        total += 0.10*subtotal
+        total = 1.10*subtotal
     
     elif opcion == 2:
-        total += 0.15*subtotal
+        total = 1.15*subtotal
 
     elif opcion == 3:
-        total += 0.20*subtotal
+        total = 1.20*subtotal
     
     elif opcion == 4:
         total = subtotal
@@ -63,8 +64,8 @@ def desglose_propina():
 #programa real
 
 datos = desglose_propina()
-for key, value in datos.items:
-    print(f"{key} --------------> {value}")
+for key, value in datos.items():
+    print(f"{key} --------------> {value:.2f}")
 
 
 
