@@ -27,16 +27,71 @@ def select_option():
             print("Ingrese un valor numerico válido")
     return option
 
-#funcion para agregar mascotas
-def add_pet():
-    pet_info = {
-        "name" : input("Ingrese el nombre de la mascota: "),
-        "specie" : input("Ingrese la especie de su mascora: ")
 
-    }
+
+def name_validator(name):
+    if name.strip() == "":
+        return False
+    else:
+        return True
+
+def  specie_validator(specie):
+    if specie.lower() == "perro" or specie.lower() == "gato" or specie.lower() == "ave":
+        return True
+    else:
+        return False
+
+def age_validator(age):
+    if age >= 0:
+        return True
+    else:
+        return False
+
+
+#forma que pide el ejercicio
+def add_pet(pet_list):
+    while True:
+        name = input("Ingrese el nombre de su mascota: ")
+        if not name_validator(name):
+            print("El nombre no puede estar vacio ni ser solo epacio en blanco")
+        else:
+            break
+    while True:
+        specie = input("Ingrese la especie de su mascota: ")
+        if not specie_validator(specie):
+            print("La especie solo puede ser 'perro', 'gato', 'ave' ")
+        else:
+            break
+    while True:
+        try:
+            age = int(input("Ingrese la edad de su mascota: "))
+            if not age_validator(age):
+                raise ValueError
+            else:
+                break
+        except ValueError:
+            print("La edad debe ser un numero entero mayor o igual a 0")
+
+    pet_info = {
+        "Nombre" : name,
+        "Especie" : specie,
+        "Edad" : age,
+        "Vacuna" : False
+    }        
     pet_list.append(pet_info)
 
-def search_pet():
+def find_pet(pet_list, finded_pet):
+    for pet in pet_list:
+        if pet["Nombre"] == finded_pet:
+           index = pet_list.index(pet)
+        else:
+            index = -1
+    return index
+
+
+#funcion para agregar mascotas
+#forma wena wena
+"""def search_pet():
     pet_name = input("Ingrese el nombre de la mascota a buscar")
     for pet in pet_list:
         if pet["name"] == pet_name:
@@ -45,12 +100,17 @@ def search_pet():
             print("Mascota no encontrada")
 
 def delete_pet():
-    pet_name = input("Ingrese el nombre de la mascota a buscar")
+    pet_name = input("Ingrese el nombre de la mascota a eliminar del registro")
     for pet in pet_list:
         if pet["name"] == pet_name:
-            pet_list.pop[]
+            pet_list.remove(pet["name"])
         else:
-            print("Mascota no encontrada")
+            print("Mascota no encontrada")"""
+
+
+
+
+
 
 
 
@@ -61,13 +121,37 @@ pet_list = []
 
 
 #-----------------bloque de ejecucion-----------------
-display_menu()
-opcion = select_option()
-if opcion == 1:
-    add_pet()
-if opcion == 2:
-    search_pet()
+opcion = 0
+while opcion != 6:
+    display_menu()
+    opcion = select_option()
+ 
+    if opcion == 1:
+        add_pet(pet_list)
 
+    elif opcion == 2:
+        while True:
+            finded_pet = input("Ingrese el nombre de la mascota a buscar: ")
+            name_validator(finded_pet)
+            if not name_validator:
+                print("El nombre no puede estar vacio ni ser solo epacio en blanco")
+            else:
+                break
+            
+        indice = find_pet(pet_list, finded_pet)
+        if indice >= 0:
+            print(f"Mascota Nº{indice}")
+            print(pet_list[indice])
+        else:
+            print("No existe")
+
+    elif opcion == 3:
+        eliminate_pet = input("Ingrese el nombre de la mascota a eliminar del registro: ")
+        index = find_pet(pet_list, eliminate_pet)
+        if index >= 0:
+            pet_list.pop(index)
+        else:
+            print("No existe")
 
 
 
