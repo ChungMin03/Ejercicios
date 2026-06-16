@@ -65,7 +65,7 @@ def desglose_propina():
 
 datos = desglose_propina()
 for key, value in datos.items():
-    print(f"{key} --------------> {value:.2f}")
+    print(f"{key} --------------> {value:.2f}")ß
 
 
 
