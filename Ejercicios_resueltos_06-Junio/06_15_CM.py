@@ -127,25 +127,25 @@ while opcion != 6:
     elif opcion == 2:
         nombre_buscado = input("Ingrese el nombre de su mascota: ")
         indice_mascota = buscarMascota(lista_mascotas, nombre_buscado) #guardamos el indice de la lista donde fue encontrado el nombre de la mascota
-        if indice_mascota != -1:
+        if indice_mascota != -1: #si encuentra el nombre, muestra los datos de la mascota
             print(f"---------------------- DATOS PACIENTE ----------------------")
             print(f"Nombre: {lista_mascotas[indice_mascota]["nombre"]}")
             print(f"Especie: {lista_mascotas[indice_mascota]["especie"]}")
             print(f"Edad: {lista_mascotas[indice_mascota]["edad"]}")
-            if not lista_mascotas[indice_mascota]["vacunado"]:
+            if not lista_mascotas[indice_mascota]["vacunado"]: #si no esta vacunado muestra pendiente
                 print(f"Estado Vacuna: PENDIENTE")
-            else:
+            else: #si esta vacunado muestra al dia
                 print(f"Estado Vacuna: AL DIA")
-        else:
+        else: #si no encuentra el nombre muestra mensaje solicitado
             print(f"La mascota {nombre_buscado} no se encuentra registrada.")
 
     elif opcion == 3:
         nombre_buscado = input("Ingrese el nombre de su mascota: ")
-        indice_mascota = buscarMascota(lista_mascotas, nombre_buscado)
-        if indice_mascota != -1:
+        indice_mascota = buscarMascota(lista_mascotas, nombre_buscado) #guardamos el indice de la lista donde fue encontrado el nombre de la mascota
+        if indice_mascota != -1: #si encuentra el nombre, usamos pop para eliminar el elemento de la lista
             lista_mascotas.pop(indice_mascota)
             print(f"La mascota {nombre_buscado} ha sido eliminada del registro.")
-        else:
+        else: #si no encuentra el nombre, mostramos mensaje solicitado
             print(f"La mascota {nombre_buscado} no se encuentra registrada.")
     
     elif opcion == 4:
