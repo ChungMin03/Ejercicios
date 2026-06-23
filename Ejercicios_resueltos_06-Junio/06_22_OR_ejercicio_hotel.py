@@ -63,16 +63,9 @@ def booking(list):
         'Noches': night
     }
     list.append(guest)
-    return list
 
 def search_booking(list,name):
-    for buscando in list:
-        if buscando['Nombre'] == name:
-            index = list.index(buscando['Nombre'])
-        
-        else:
-            index = -1
-        return index
+    
 
 
 
