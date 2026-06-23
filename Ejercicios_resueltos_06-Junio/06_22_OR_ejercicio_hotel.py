@@ -31,13 +31,60 @@ def night_validator(night):
         return False
     return True
 
-
-
-
-
-
 def booking(list):
-    print()
+    while True:
+            name = input("Ingrese su nombre: ")
+            if not name_validator(name):
+                print("No puede dejar este espacio en blanco")
+            else:
+                break
+    while True:
+        try:
+            room = int(input("Ingrese el numero de habitacion: "))
+            if not room_validator(room):
+                print("Ingrese un numero de habitacion valido")
+            else:
+                break
+        except ValueError:
+            print("Ingrese un valur numerico valido")
+    while True:
+        try:
+            night = int(input("Ingrese la cantidad de noches que se hospedará: "))
+            if not night_validator(night):
+                print("Ingrese una cantidad de noches valida")
+            else:
+                break
+        except ValueError:
+            print("Ingrese un valor numerico válido")
+    
+    guest = {
+        'Nombre': name,
+        'Habitación': room,
+        'Noches': night
+    }
+    list.append(guest)
+
+def search_booking(list,name):
+    
+
+
+
+
+
+
+
+
+
+
+
+
+#-----------------bloque de variables---------------
+rooms = []
+booking = []
+#---------------------------------------------------
+
+
+#-----------------bloque de ejecucion-------------------
 
 
 

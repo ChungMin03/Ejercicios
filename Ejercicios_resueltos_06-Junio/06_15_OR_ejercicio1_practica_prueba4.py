@@ -88,11 +88,26 @@ def find_pet(pet_list, finded_pet):
             index = -1
     return index
 
-def vacune_validator(list):
-    for pet in list:
-        if pet["Edad"] >= 1:
-            pet["Vacuna"] = True
-        
+
+#funcion para agregar mascotas
+#forma wena wena
+"""def search_pet():
+    pet_name = input("Ingrese el nombre de la mascota a buscar")
+    for pet in pet_list:
+        if pet["name"] == pet_name:
+            print("Mascota encontrada")
+        else:
+            print("Mascota no encontrada")
+
+def delete_pet():
+    pet_name = input("Ingrese el nombre de la mascota a eliminar del registro")
+    for pet in pet_list:
+        if pet["name"] == pet_name:
+            pet_list.remove(pet["name"])
+        else:
+            print("Mascota no encontrada")"""
+
+
 
 
 
@@ -138,18 +153,7 @@ while opcion != 6:
         else:
             print("No existe")
 
-    elif opcion == 4:
-        vacune_validator(pet_list)
-        print(pet_list)
-    
-    elif opcion == 5:
-        for i in pet_list:
-            for key, value in i:
-                print(f"{key}: {value}")
-                if pet_list["Vacuna"] == False:
-                    print(f"{key}: Pendiente")
-                else:
-                    print(f"{key}: Al día")
 
 
-            
+
+   
