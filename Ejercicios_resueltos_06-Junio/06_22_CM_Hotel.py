@@ -71,7 +71,7 @@ def agregar_reserva(lista_reservas):
         "confirmada": False
     }
     lista_reservas.append(reserva_persona)
-    
+
 def buscar_reserva(lista_reservas, nombre_buscar):
     for i in range(len(lista_reservas)):
         if lista_reservas[i]["nombre"].lower() == nombre_buscar.lower():
@@ -82,7 +82,7 @@ def actualizar_reservas(lista_reservas):
     for reserva in lista_reservas:
         if reserva["noches"] >= 2:
             reserva["confirmada"] = True
-        
+
 
 #-------------------------------- CODIGO PRINCIPAL -------------------------------------------
 lista_reservas = []
@@ -119,16 +119,19 @@ while opcion != 6:
     if opcion == 5:
         actualizar_reservas(lista_reservas)
         
-        for reserva in lista_reservas:
+        if not lista_reservas:
+            print("No hay reservas. ")
+        else:
             print("============ LISTA DE RESERVAS =============")
-            print("\n")
-            print(f"Huesped: {reserva["nombre"]}")
-            print(f"Habitacion: {reserva["habitacion"]}")
-            print(f"Noches: {reserva["noches"]}")
-            print(f"Estado: {"CONFIRMADA" if reserva["confirmada"] else "PENDIENTE"}")
+            for reserva in lista_reservas:
+                print("\n")
+                print(f"Huesped: {reserva["nombre"]}")
+                print(f"Habitacion: {reserva["habitacion"]}")
+                print(f"Noches: {reserva["noches"]}")
+                print(f"Estado: {"CONFIRMADA" if reserva["confirmada"] else "PENDIENTE"}")
 
-            print("\n")
-            print("********************************************")
+                print("\n")
+                print("********************************************")
     
     if opcion == 6:
         print("Gracias por usar el sistema. Vuelva Pronto")
