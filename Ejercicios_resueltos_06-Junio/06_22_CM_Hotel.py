@@ -7,6 +7,7 @@ def menu():
     print("4. Confirmar reservas")
     print("5. Mostrar reservas")
     print("6. Salir")
+    print("**************************************")
     
 def pedir_opcion():
     while True:
@@ -102,6 +103,8 @@ while opcion != 6:
             print(f"Nombre: {lista_reservas[indice]["nombre"]}")
             print(f"Habitacion reservada: {lista_reservas[indice]["habitacion"]}")
             print(f"Noches reservadas: {lista_reservas[indice]["noches"]}")
+        else:
+            print("No hay reservas a este nombre.")
 
     if opcion == 3:
         nombre_buscar = input("Ingrese el nombre a buscar: ")
