@@ -1,0 +1,178 @@
+#----------------- bloque variables ----------------
+lista_mascotas = []
+
+#----------------- bloque funciones validacion ----------------
+
+def validar_nombre(nombre):
+    if nombre.strip() != "" and nombre.replace(" ", "").isalpha():
+        return True
+    else:
+        return False
+
+def validar_edad(edad):
+    if isinstance(edad, int) and edad >= 0:
+        return True
+    else:
+        return False
+
+def validar_especie(especie):
+    if especie.strip().capitalize() in ["Perro", "Gato", "Ave"]:
+        return True
+    else:
+        return False
+
+def validar_opcion(opcion):
+    if isinstance(opcion, int) and 1 <= opcion <= 6:
+        return True
+    else:
+        return False
+
+#----------------- bloque funciones Menu ----------------
+
+# Funcion que muestra el menu y retorna la opcion seleccionada por el usuario
+def menu():
+    print("\n======== MENÚ PRINCIPAL ========")
+    print("1.- Ingresar mascosa")
+    print("2.- Buscar mascota")
+    print("3.- Marcar vacuna")
+    print("4.- Eliminar mascota")
+    print("5.- Mostrar mascota")
+    print("6.- Salir")
+    print("=================================")
+
+    while True:
+        try:
+            opcion = int(input("Seleccionar una opcion: "))
+            if validar_opcion(opcion):
+                break
+            else:
+                print("Debe seleccionar una opcion del 1 al 6.")
+        except ValueError:
+            print("Debe ingresar un numero.")
+    
+    return opcion
+
+        
+# Funcion que crea un diccionario con la informacion de la mascota y lo retorna
+def crear_mascota(nombre: str, edad: int, especie: str) -> dict:
+    mascota = {
+        "nombre": nombre,
+        "edad": edad,
+        "especie": especie,
+        "vacuna": False 
+    }
+    return mascota
+
+
+# Funcion que permite ingresar la informacion de una mascota, valida los datos ingresados y agrega el diccionario a la lista de mascotas
+def ingresar ():
+    while True:
+        nombre = input("Ingresar nombre: ").strip().capitalize()
+        # Validar que el nombre solo contenga letras y que no este vacio
+        if validar_nombre(nombre):
+            break
+
+        print("Debe ingresar un nombre valido, solo letras y espacios.")
+
+    while True:
+        try:
+            edad = int(input("Ingresar la edad de tu mascota: "))
+            if validar_edad(edad):
+                break
+            print("Debe ingresar una edad valida.")
+        except ValueError:
+            print("Debe ingresar un numero para la edad.")
+
+    while True:
+        especie = input("Ingresar especie (perro, gato o ave): ").strip().capitalize()
+        if validar_especie(especie):
+            break
+        print("Debe ingresar una especie valida: perro, gato o ave.")
+
+    lista_mascotas.append(crear_mascota(nombre, edad, especie))
+    print(f"Mascota {nombre} ingresada exitosamente.")
+
+
+def buscar(nombre_buscar):
+    for i in range(len(lista_mascotas)):
+        if lista_mascotas[i]["nombre"].lower() == nombre_buscar.lower():
+            return i
+    return -1
+
+
+def marcar_vacuna(lista_mascotas):
+    for mascota in lista_mascotas:
+        if mascota["edad"] >= 1 and mascota["vacuna"] == False:
+            mascota["vacuna"] = True
+            print(f"Vacuna marcada para {mascota['nombre']}.")
+        else:
+            mascota["vacuna"] = False
+            print(f"{mascota['nombre']} no cumple con los requisitos para marcar vacuna.")
+    
+    print("Proceso de marcado de vacuna completado.")
+
+
+def eliminar_mascota(posicion):
+    if posicion != -1:
+        lista_mascotas.pop(posicion)
+        return True
+    return False
+
+
+def mostrar_mascota():
+    if not lista_mascotas:
+        print("No hay mascotas registradas.")
+    
+    for mascota in lista_mascotas:
+        print(f"Nombre: {mascota['nombre']}")
+        print(f"Edad: {mascota['edad']} años")
+        print(f"Especie: {mascota['especie']}")
+        print(f"Vacuna: {'AL DIA' if mascota['vacuna'] == True else 'PENDIENTE'}\n")
+
+
+#----------------- bloque funcion principal ----------------
+
+def main():
+    while True:
+        opcion = menu()
+        if opcion == 1:
+            ingresar()
+        
+        elif opcion == 2:
+            nombre = input("Ingrese el nombre de la mascota a buscar: ").strip().capitalize()
+            posicion = buscar(nombre)
+
+            if posicion != -1:
+                mascota_encontrada = lista_mascotas[posicion]
+                print(f"\n--- Mascota encontrada ---")
+                print(f"Nombre: {mascota_encontrada['nombre']}")
+                print(f"Edad: {mascota_encontrada['edad']} años")
+                print(f"Especie: {mascota_encontrada['especie']}")
+                print(f"Vacuna: {'AL DIA' if mascota_encontrada['vacuna'] == True else 'PENDIENTE'}")
+            else:
+                print("Mascota no encontrada.")
+
+        elif opcion == 3:
+            marcar_vacuna(lista_mascotas)
+        
+        elif opcion == 4:
+            nombre_eliminar = input("ingresar nombre mascota a eliminar: ").strip().capitalize()
+            posicion = buscar(nombre_eliminar)
+            mascota_eliminada = eliminar_mascota(posicion)
+
+            if mascota_eliminada:
+                print(f"Mascota {nombre_eliminar} eliminada exitosamente.")
+            else:
+                print("Mascota no encontrada para eliminar.")
+        
+        elif opcion == 5:
+            mostrar_mascota()
+        
+        elif opcion == 6:
+            print("Gracias por usar el sistema de veterinaria. ¡Hasta luego!")
+            break
+
+#----------------- Bloque de ejecucion ----------------
+
+if __name__ == "__main__":
+    main()
