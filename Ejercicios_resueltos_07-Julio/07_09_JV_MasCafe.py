@@ -31,9 +31,9 @@ def validar_nombre(nombre: str) -> bool:
         return False
 
 def validar_categoria(categoria: str) -> bool:
-    categoria = categoria.lower().strip()
+    categoria = categoria.strip()
 
-    if categoria in ["cafe", "te", "bebida"]:
+    if categoria != "" and categoria.replace(" ", "").isalpha():
         return True
     else:
         return False
@@ -47,12 +47,13 @@ def validar_tamaño(tamaño: str) -> bool:
         return False
 
 def validar_tipo_leche(tipo_leche: str) -> bool:
-    tipo_leche = tipo_leche.lower().strip()
+    tipo_leche = tipo_leche.strip()
 
-    if tipo_leche in ["entera", "descremada", "sin leche"]:
+    if tipo_leche != "" and tipo_leche.replace(" ", "").isalpha():
         return True
     else:
         return False
+
 
 def validar_temporada(temporada: str) -> bool:
     temporada = temporada.lower().strip()
@@ -138,7 +139,7 @@ def busqueda_precio(productos: dict, ventas: dict, precio_min: int, precio_max: 
     else:
         print("Productos encontrados:")
         for resultado in resultados:
-            print(f"Nombre: {(resultado[1]).capitalize()} -- Precio: {resultado[2]}")
+            print(f"Codigo: {resultado[0]} -- Nombre: {(resultado[1]).capitalize()} -- Precio: {resultado[2]}")
 
 def actualizar_precio(productos: dict, ventas: dict, codigo: str, nuevo_precio: int) -> bool:
     codigo = codigo.upper().strip()
@@ -293,7 +294,7 @@ def main():
                     while True:
                         categoria = input("Ingrese la categoría (cafe, te, bebida): ")
                         if not validar_categoria(categoria):
-                            print("Categoría inválida. Debe ser 'cafe', 'te' o 'bebida'.")
+                            print("Categoría inválida. Debe contener solo letras y espacios.")
                             continue
                         else:
                             break
@@ -311,7 +312,7 @@ def main():
                     while True:
                         tipo_leche = input("Ingrese el tipo de leche (entera, descremada, sin leche): ")
                         if not validar_tipo_leche(tipo_leche):
-                            print("Tipo de leche inválido. Debe ser 'entera', 'descremada' o 'sin leche'.")
+                            print("Tipo de leche inválido. Debe contener solo letras y espacios.")
                             continue
                         else:
                             break
