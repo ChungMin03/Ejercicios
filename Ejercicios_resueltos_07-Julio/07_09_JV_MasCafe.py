@@ -4,11 +4,9 @@ EJERCICIO DE PRÁCTICA - SISTEMA DE MAS CAFE
 
 # ---------------- Bloque diccionarios ----------------
 
-
 def crear_datos_producto(nombre: str, categoria: str, tamaño: str, tipo_leche: str, temporada: bool) -> list:
     datos_producto = [nombre.strip(), categoria.strip().lower(), tamaño.strip().lower(), tipo_leche.strip().lower(), temporada]
     return datos_producto
-
 
 def crear_datos_venta(precio: int, stock: int) -> list:
     datos_venta = [precio, stock]
@@ -198,7 +196,10 @@ def main():
 
 
     while True:
+        # Se muestra el menú y se obtiene la opción del usuario
         mostrar_menu()
+        
+        # Se obtiene la opción del usuario y se valida que sea un número entero entre 1 y 6
         opcion = obtener_opcion()
 
         # Se muestra el stock por categoría
@@ -213,6 +214,8 @@ def main():
         # Se realiza la búsqueda de productos por rango de precio
         # El usuario ingresa el precio mínimo y máximo, y se valida que sean números enteros y que el precio máximo no sea menor al precio mínimo.
         if opcion == 2:
+
+            # Se solicita al usuario que ingrese el precio mínimo y máximo, y se valida que sean números enteros y que el precio máximo no sea menor al precio mínimo.
             while True:
                 try:
                     precio_min = int(input("Ingrese el precio mínimo: "))
@@ -242,11 +245,18 @@ def main():
         if opcion == 3:
             codigo = input("Ingrese el código del producto a actualizar: ")
 
+            # Se valida que el código ingresado sea válido y que exista en el sistema antes de actualizar el precio.
             if validar_codigo(codigo):
+
+                # Se valida que el código ingresado exista en el sistema antes de actualizar el precio.
                 if buscar_codigo(productos, codigo):
                     try:
                         nuevo_precio = int(input("Ingrese el nuevo precio: "))
+
+                        # Se valida que el nuevo precio sea mayor a 0 antes de actualizar el precio.
                         if validar_precio(nuevo_precio):
+
+                            # Se actualiza el precio del producto y se muestra un mensaje de éxito o error según corresponda.
                             if actualizar_precio(productos, ventas, codigo, nuevo_precio):
                                 print("Precio actualizado correctamente.")
                             else:
@@ -265,8 +275,12 @@ def main():
         if opcion == 4:
             codigo = input("Ingrese el código del nuevo producto: ")
 
+            # Se valida que el código ingresado sea válido y que no exista en el sistema antes de agregarlo.
+            # Una vez que el codigo sea valido, el programa solicitara al usuario que ingrese los demas datos del producto.
             if validar_codigo(codigo):
                 if not buscar_codigo(productos, codigo):
+
+                    # Se solicita el nombre
                     while True:
                         nombre = input("Ingrese el nombre del producto: ")
                         if not validar_nombre(nombre):
@@ -275,6 +289,7 @@ def main():
                         else:   
                             break
                     
+                    # Se solicita la categoría
                     while True:
                         categoria = input("Ingrese la categoría (cafe, te, bebida): ")
                         if not validar_categoria(categoria):
@@ -283,6 +298,7 @@ def main():
                         else:
                             break
                     
+                    # Se solicita el tamaño
                     while True:
                         tamaño = input("Ingrese el tamaño (chico, mediano, grande): ")
                         if not validar_tamaño(tamaño):
@@ -291,6 +307,7 @@ def main():
                         else:
                             break
                     
+                    # Se solicita el tipo de leche
                     while True:
                         tipo_leche = input("Ingrese el tipo de leche (entera, descremada, sin leche): ")
                         if not validar_tipo_leche(tipo_leche):
@@ -298,7 +315,8 @@ def main():
                             continue
                         else:
                             break
-
+                    
+                    # Se solicita si es un producto de temporada
                     while True:
                         temporada = input("¿Es un producto de temporada? (si/no): ")
                         if not validar_temporada(temporada):
@@ -306,7 +324,8 @@ def main():
                             continue
                         else:
                             break
-
+                    
+                    # Se solicita el precio y stock del producto, validando que sean números enteros y que el precio sea mayor a 0 y el stock no sea negativo.
                     while True:
                         try:
                             precio = int(input("Ingrese el precio del producto: "))
@@ -327,6 +346,7 @@ def main():
                         except ValueError:
                             print("Debe ingresar un número entero para el stock.")
                     
+                    # Se crean los datos del producto y de la venta, y se agregan al sistema.
                     datos_producto = crear_datos_producto(nombre, categoria, tamaño, tipo_leche, temporada.lower() in ["si", "s"])
                     datos_venta = crear_datos_venta(precio, stock)
 
