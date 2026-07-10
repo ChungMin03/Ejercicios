@@ -244,32 +244,44 @@ def main():
         
         # Se actualiza el precio de un producto existente
         if opcion == 3:
-            codigo = input("Ingrese el código del producto a actualizar: ")
+            continuar = "s"
+            while continuar == "s" or continuar == "si":
 
-            # Se valida que el código ingresado sea válido y que exista en el sistema antes de actualizar el precio.
-            if validar_codigo(codigo):
+                codigo = input("Ingrese el código del producto a actualizar: ")
 
-                # Se valida que el código ingresado exista en el sistema antes de actualizar el precio.
-                if buscar_codigo(productos, codigo):
-                    try:
-                        nuevo_precio = int(input("Ingrese el nuevo precio: "))
+                # Se valida que el código ingresado sea válido y que exista en el sistema antes de actualizar el precio.
+                if validar_codigo(codigo):
 
-                        # Se valida que el nuevo precio sea mayor a 0 antes de actualizar el precio.
-                        if validar_precio(nuevo_precio):
+                    # Se valida que el código ingresado exista en el sistema antes de actualizar el precio.
+                    if buscar_codigo(productos, codigo):
+                        try:
+                            nuevo_precio = int(input("Ingrese el nuevo precio: "))
 
-                            # Se actualiza el precio del producto y se muestra un mensaje de éxito o error según corresponda.
-                            if actualizar_precio(productos, ventas, codigo, nuevo_precio):
-                                print("Precio actualizado correctamente.")
+                            # Se valida que el nuevo precio sea mayor a 0 antes de actualizar el precio.
+                            if validar_precio(nuevo_precio):
+
+                                # Se actualiza el precio del producto y se muestra un mensaje de éxito o error según corresponda.
+                                if actualizar_precio(productos, ventas, codigo, nuevo_precio):
+                                    print("Precio actualizado correctamente.")
+                                else:
+                                    print("Error al actualizar el precio.")
                             else:
-                                print("Error al actualizar el precio.")
-                        else:
-                            print("El precio debe ser mayor a 0.")
-                    except ValueError:
-                        print("Debe ingresar un número entero para el precio.")
+                                print("El precio debe ser mayor a 0.")
+                        except ValueError:
+                            print("Debe ingresar un número entero para el precio.")
+                    else:
+                        print("El código ingresado no existe en el sistema.")
                 else:
-                    print("El código ingresado no existe en el sistema.")
-            else:
-                print("Código inválido. Debe tener el formato 'PXXX' donde XXX son dígitos.")
+                    print("Código inválido. Debe tener el formato 'PXXX' donde XXX son dígitos.")
+                
+                while True:
+                    continuar = input("¿Desea actualizar otro producto? (si/no): ").lower().strip()
+                    if continuar in ["si", "s", "no", "n"]:
+                        break
+                    else:
+                        print("Respuesta inválida. Debe ser 'si' o 'no'.")
+                
+
                 
         
         # Se agrega un nuevo producto al sistema
