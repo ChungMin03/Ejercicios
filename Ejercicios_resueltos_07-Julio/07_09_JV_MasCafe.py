@@ -94,7 +94,7 @@ def obtener_opcion():
             if 1 <= opcion <= 6:
                 return opcion
             else:
-                print("Debe ingresar una opcipon del 1 al 7.")
+                print("Debe ingresar una opcion del 1 al 6.")
         except ValueError:
             print("Debe ingresar un número.")
 
