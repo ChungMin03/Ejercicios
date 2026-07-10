@@ -245,7 +245,7 @@ while opcion != 6:
                     raise ValueError
             except ValueError:
                 print("ERROR: Debe ingresar un numero mayor o igual a cero.")
-        producto_agregado = agregar_producto(codigo_producto,nombre_producto,categoria,tamano,tipo_leche,es_temporada,precio_producto,stock_producto,productos, ventas)
+        producto_agregado = agregar_producto(codigo_producto,nombre_producto,categoria,tamano,tipo_leche,es_temporada,precio_producto,stock_producto,productos,ventas)
         if producto_agregado:
             print("Producto agregado.")
         else:
